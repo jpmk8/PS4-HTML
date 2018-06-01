@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html><head><title>PS4Jailbreak 5.05</title>
+<link rel="stylesheet" href="css/estilo.css"/>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<script src="js/funciones.js"></script>
+</head>
+<body onload="runExploit()" style="margin:0">
+<div id="loader" class="loader"></div>
+<div id="done" class="info" style="display:none">Done.</div>
+<div id="fail" class="info" style="display:none">Fail!</div>
+<div id="footer">Agradecimientos a:<br><br></div>
+<script>
+var creditos = [
+	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
+	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
+	{nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
+	{nick:'Vortex',logo:'vortex.jpg',info:'Kernel exploid, payloads(HEN, FTP, Dumper, Backup)'},
+	{nick:'2much4ux',logo:'2much4ux.jpg',info:'payloads (Debug Settings, Full Debug Settings, Permanent Webbrowser Patch)'},
+	{nick:'LightningMods',logo:'lightningmods.jpg',info:'payloads (Update-Blocker, Linux-Web)'},
+	{nick:'fail0verflow',logo:'fail0verflow.jpg',info:'payloads (Overlay, Kexec, linux)'},
+	{nick:'m0rph3us1987',logo:'m0rph3us1987.jpg',info:'payload Holy Grail (HEN)'},
+	{nick:'Vultra',logo:'vultra.jpg',info:'Linux Loader'},
+	{nick:'Sistro',logo:'sistro.jpg',info:'payload PKG2USB'},
+	{nick:'Stooged',logo:'Stooged.jpg',info:'payload Enable VR, AppToUSB, DB_SG_Backup'},
+	{nick:'Al Azif',logo:'AlAzif.jpg',info:'DNS spoof, host exploid, unificación de los kernel exploids y payloads'},
+	{nick:'RetroGamer 74',logo:'RG74.PNG',info:'PS4 Admin, para web y chip ESP8266, tester, tutoriales y mucho más...'},
+	{nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin convertir'},
+	{nick:'anonymous',logo:'anonymous.jpg',info:'Todos aquellos que se esfuerzan por la escena y aun no sabemos quienes son'},
+];
+var html = '';
+creditos.forEach(function (c){
+	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
+});
+document.getElementById('footer').innerHTML += html;	
+var cookies = getCookies();
+var payload = [];
+var xhr = new XMLHttpRequest();
+xhr.open('GET', cookies['payload'], true);
+xhr.responseType = 'arraybuffer';
+xhr.onload = function(e) {   
+    payload = new Uint32Array(this.response);
+    manejoCookies(document.cookie,false);
+};
+xhr.send();
+loadScript('js/vortex.js');
+</script>
+</body></html>

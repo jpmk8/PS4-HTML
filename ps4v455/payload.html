@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PS4Brew 4.55</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link  rel="stylesheet" href="css/estilo.css"/>
+  <script src="js/funciones.js"></script>  
+</head>
+
+<body onload="runExploit()" style="margin:0;">
+  <div id="loader" class="loader"></div>
+
+  <div id="allset" class="info" style="display:none;">
+    You're all set!
+  </div>
+
+  <div id="fail" class="info" style="display:none;">
+    Something went wrong :(
+  </div>
+
+  <div id="badfw" class="info" style="display:none;">
+    Only firmware 4.55 is supported!
+  </div>
+
+  <div id="footer">Agradecimientos a:<br><br></div>
+
+    <script>
+    function runExploit() {
+      setTimeout(exploit, 1500);
+    }
+
+    function allset() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("allset").style.display = "block";
+    }
+
+    function fail(info) {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("fail").style.display = "block";
+
+      alert(info)
+    }
+    var creditos = [
+        {nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
+        {nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
+        {nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
+        {nick:'Vortex',logo:'vortex.jpg',info:'Kernel exploid, payloads(HEN, FTP, Dumper, Backup)'},
+        {nick:'2much4ux',logo:'2much4ux.jpg',info:'payloads (Debug Settings, Full Debug Settings, Permanent Webbrowser Patch)'},
+        {nick:'LightningMods',logo:'lightningmods.jpg',info:'payloads (Update-Blocker, Linux-Web)'},
+        {nick:'fail0verflow',logo:'fail0verflow.jpg',info:'payloads (Overlay, Kexec, linux)'},
+        {nick:'m0rph3us1987',logo:'m0rph3us1987.jpg',info:'payload Holy Grail (HEN)'},
+        {nick:'Vultra',logo:'vultra.jpg',info:'Linux Loader'},
+        {nick:'Sistro',logo:'sistro.jpg',info:'payload PKG2USB'},
+        {nick:'Stooged',logo:'Stooged.jpg',info:'payload Enable VR'},
+        {nick:'Al Azif',logo:'AlAzif.jpg',info:'DNS spoof, host exploid, unificación de los kernel exploids y payloads'},
+        {nick:'RetroGamer 74',logo:'RG74.PNG',info:'PS4 Admin, para web y chip ESP8266, tester, tutoriales y mucho más...'},
+        {nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin convertir'},
+        {nick:'anonymous',logo:'anonymous.jpg',info:'Todos aquellos que se esfuerzan por la escena y aun no sabemos quienes son'},
+    ];
+    var html = '';
+    creditos.forEach(function (c){
+        html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
+        
+    });
+    document.getElementById('footer').innerHTML += html;
+    var files = "rop.js|syscalls.js|loader.js|payload.js|userland.js|kernel.js";
+    files.split('|').forEach(function (url){
+        loadScript('js/'+url);
+    });
+    
+    </script>
+
+</body>
+</html>

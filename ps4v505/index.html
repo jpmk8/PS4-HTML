@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link  rel="stylesheet" href="css/estilo.css"/>
+<script src="js/funciones.js"></script>
+<title>RG Exploits</title>
+</head>
+
+<body>
+<img src="image/RG74.png" onClick="location.href = 'https://twitter.com/retrogamer_74';" style="cursor:pointer"/>
+    <center style="width: 90%;">
+    <script>
+    console.log("CARGANDO...");
+    
+    var payloads = [
+        {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
+        {id:'DUMP',name:'Dumper',payload:'ps4-dumper-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
+        {id:'FTP',name:'FTP',payload:'ps4-ftp-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
+        {id:'Google',name:'Buscador Google',url:'http://google.com',logo:'google.png'},
+    ];
+    
+    payloads.forEach(function (p){
+        document.write('<div id="'+p.id+'" class="bt">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
+        document.getElementById(p.id).onclick = function() {
+            if(p.hasOwnProperty("url"))
+                location.href = p.url;
+            else{
+                if(/PlayStation/.test(navigator.userAgent)){
+                    manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + 'payload/'+p.payload,true);
+                    location.href = ( p.hasOwnProperty("payload") ) ? 'payload.html' : 'index.html';
+                }
+                else{  
+                    var elm = document.getElementsByClassName('info').item(0);
+                    elm.innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
+                    elm.style.display = 'block';
+                }
+            }
+        };
+    });
+    </script>
+        
+    </center>
+    <div class="info" onClick="this.style.display = 'none'" style="display:none;"></div>
+</body>
+</html>
+
