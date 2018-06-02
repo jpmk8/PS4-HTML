@@ -30,7 +30,7 @@ var gc = {
 	"setjmp": 5368
 };
 window.onload = function () {
-	setTimeout(exploit, 30000);
+	setTimeout(exploit, 2500);
 };
 window.onerror = function (e) {
 	document.getElementById("loader").style.display = "none";
