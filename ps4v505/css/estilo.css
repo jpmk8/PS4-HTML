@@ -13,9 +13,9 @@ center{
 }
 .bt{
     background-color:hsla(0,0%,69%,0.55);
-    width:200px;
+    width:150px;
  
-    height:250px;
+    height:200px;
     display:inline-table;
 /**/
     padding: 5px;
@@ -71,7 +71,7 @@ center{
     overflow: hidden;
 }
 #footer{
-    padding-top:40%;
+    padding-top:32%;
     background-color:hsla(0,0%,100%,0.70);
     text-align:center;
 }
