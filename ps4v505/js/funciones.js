@@ -34,10 +34,10 @@ function loadScript(url) {
     script.src = url; 
     document.body.appendChild(script); 
 }
-function invertirEndian(endian){
-    hex = endian.toString(16);
-    hex = ('0x00000000'.slice(0, 10 - hex.length) + hex).replace(/0x([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/,'0x$4$3$2$1');
-    return parseInt(hex);
+function toHEX4(int){
+    hex = int.toString(16);
+    hex = ('0x00000000'.slice(0, 10 - hex.length) + hex).replace(/0x([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/,'$4$3$2$1');
+    return hex; //parseInt(hex);
 }
 
 
