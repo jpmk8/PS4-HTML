@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link  rel="stylesheet" href="css/estilo.css"/>
 <script src="js/funciones.js"></script>
-<title>RG Exploits</title>
+<title>RG Exploits - PS4 5.05</title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + 'payload/'+p.payload,true);
                     location.href = ( p.hasOwnProperty("payload") ) ? 'payload.html' : 'index.html';
                 }
-                else{  
+                else{
                     var elm = document.getElementsByClassName('info').item(0);
                     elm.innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
                     elm.style.display = 'block';
