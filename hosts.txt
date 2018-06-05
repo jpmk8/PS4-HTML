@@ -1,0 +1,40 @@
+﻿# Este contenido va en el archivo /etc/hosts dentro del router, si no existe debe crearlo
+# Lista de bloqueo de URL para PS4
+127.0.0.1	a01.cdn.update.playstation.org.edgesuite.net
+127.0.0.1	a192.d.akamai.net
+127.0.0.1	al02.cdn.update.playstation.net
+127.0.0.1	apicdn-p014.ribob01.net
+127.0.0.1	api-p014.ribob01.net
+127.0.0.1	artcdnsecure.ribob01.net
+127.0.0.1	artcdnsecure.ribob01.netapi-p014.ribob01.net
+127.0.0.1	asm.np.community.playstation.net
+127.0.0.1	deu01.ps4.update.playstation.net
+127.0.0.1	djp01.ps4.update.playstation.net
+127.0.0.1	dru01.ps4.update.playstation.net
+127.0.0.1	duk01.ps4.update.playstation.net
+127.0.0.1	dus01.ps4.update.playstation.net
+127.0.0.1	feu01.ps4.update.playstation.net
+127.0.0.1	fjp01.ps4.update.playstation.net
+127.0.0.1	fru01.ps4.update.playstation.net
+127.0.0.1	fuk01.ps4.update.playstation.net
+127.0.0.1	fus01.ps4.update.playstation.net
+127.0.0.1	get.net.playstation.net
+127.0.0.1	playstation.sony.akadns.net
+127.0.0.1	post.net.playstation.net
+127.0.0.1	ps4.update.playstation.net
+127.0.0.1	ps4.updptl.np.community.playstation.net
+127.0.0.1	ps4.updptl.sp-int.community.playstation.net
+127.0.0.1	ps4-eb.ww.np.dl.playstation.net
+127.0.0.1	ps4updptl.eu.np.community.playstation.net
+127.0.0.1	ps4updptl.jp.np.community.playstation.net
+127.0.0.1	ps4updptl.jp.sp-int.community.playstation.net
+127.0.0.1	ps4updptl.ru.np.community.playstation.net
+127.0.0.1	sf.api.np.km.playstation.net
+127.0.0.1	themis.dl.playstation.net
+127.0.0.1	tmdb.np.dl.playstation.net
+127.0.0.1	t-prof.np.community.playstation.net
+127.0.0.1	us.np.stun.playstation.net
+
+# Lista de redirección de URL para PS4 la IP del router puede cambiar de acuerdo a tu red interna
+192.168.20.1	manuals.playstation.net
+192.168.20.1	playstation.com www.playstation.com
