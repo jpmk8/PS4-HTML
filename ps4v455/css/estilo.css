@@ -9,7 +9,7 @@ body{
     font-family:PS4Font;
 }
 center{ 
-    top:200px;
+    padding-top:10%;
 }
 .bt{
     background-color:hsla(0,0%,69%,0.55);
@@ -72,11 +72,13 @@ center{
 .credits {
     font-size: 12px;
     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width:100px; 
     height:200px;
     display:inline-table;
     position:relative;
     margin-bottom:20px;
+}
+.credits>img, .credits{
+    width:90px;
 }
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
