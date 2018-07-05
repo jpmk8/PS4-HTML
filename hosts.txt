@@ -34,6 +34,7 @@
 127.0.0.1	tmdb.np.dl.playstation.net
 127.0.0.1	t-prof.np.community.playstation.net
 127.0.0.1	us.np.stun.playstation.net
+127.0.0.1	gs2.ww.prod.dl.playstation.net
 
 # Lista de redirección de URL para PS4 la IP del router puede cambiar de acuerdo a tu red interna
 192.168.20.1	manuals.playstation.net

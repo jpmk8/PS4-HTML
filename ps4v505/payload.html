@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
-<html><head><title>PS4Jailbreak 5.05</title>
+<html>
+<head>
+<title>PS4Jailbreak 5.05</title>
 <link rel="stylesheet" href="css/estilo.css"/>
 <meta name=viewport content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
@@ -9,7 +11,9 @@
 <div id="loader" class="loader"></div>
 <div id="done" class="info" style="display:none">Done.</div>
 <div id="fail" class="info" style="display:none">Fail!</div>
-<div id="footer">Agradecimientos a:<br><br></div>
+<div id="footer">Agradecimientos a:<br>
+  <br>
+</div>
 <script>
 var creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
@@ -39,12 +43,20 @@ var payload = [];
 var xhr = new XMLHttpRequest();
 xhr.open('GET', cookies['payload'], true);
 xhr.responseType = 'arraybuffer';
-xhr.onload = function(e) {   
-    payload = new Uint32Array(this.response);
+xhr.onload = function(e) {
+    var buffer = new Uint8Array(this.response);
+    var nuevaLen = buffer.length; 
+    while(nuevaLen % 4 != 0)
+        nuevaLen++;
+    var newbuffer = new Uint8Array(nuevaLen);
+    for(var i = 0;i < buffer.length;i++)
+        newbuffer[i]=buffer[i];
+    payload = new Uint32Array(newbuffer.buffer);
     manejoCookies(document.cookie,false);
     loadScript('js/vortex.js');
 };
 xhr.send();
 
 </script>
-</body></html>
+</body>
+</html>
