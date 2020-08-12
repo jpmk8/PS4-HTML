@@ -1,5 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
 @font-face {
     font-family: PS4Font;
     src: url(../font/ps4font.otf);
@@ -8,6 +7,7 @@ body{
     background-image:url(../image/bg.jpg);/**/
     background-color:#08285A;
     font-family:PS4Font;
+	color:#fff;
 }
 center{ 
     padding-top:10%;

@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <link  rel="stylesheet" href="css/estilo.css"/>
 <script src="js/funciones.js"></script>
-<title>RG Exploits - PS4 5.05</title>
+<title>RG Exploits - PS4</title>
 </head>
 
 <body>
+Estamos en desarrollo :D,
 <center style="width: 90%;">
   <script>
-  alert(navigator.userAgent);
-  v=versionPS4(navigator.userAgent);
-    var payloads = [
-        {id:'HEN',name:'Homebrew Enabler',payload:v+'/ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg'},
+    alert(navigator.userAgent);
+    v=versionPS4(navigator.userAgent);
+	document.title+=v;
+    payloads = [
+        {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg'},
        /* {id:'DUMP',name:'Dumper',payload:'ps4-dumper-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
         {id:'FTP',name:'FTP',payload:'ps4-ftp-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
         {id:'Backup',name:'DB SG Backup',payload:'DB_SG_Backup.bin',credito:'Stooged',logo:'stooged.jpg'},
@@ -27,9 +29,9 @@
             if(p.hasOwnProperty("url"))
                 location.href = p.url;
             else{
-                if(/PlayStation/.test(navigator.userAgent)){
-                    manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + 'payload/'+p.payload,true);
-                    location.href = ( p.hasOwnProperty("payload") ) ? 'payload.html' : 'index.html';
+                if(v!=0){
+                    manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
+                    location.href = ( p.hasOwnProperty("payload") ) ?  v+'/payload.html' : 'index.html';
                 }
                 else{
                     var elm = document.getElementsByClassName('info').item(0);
@@ -41,6 +43,11 @@
     });
     </script>
 </center>
-<div class="info" onClick="this.style.display = 'none'" style="display:none;"></div>
+<center>
+<div>Reducir c-code.js</div><br><textarea id="reductor" style="width:800px;height:400px"></textarea><textarea id="variables" style="width:600px;height:400px"></textarea>
+<br><div onclick="alert('Convirtiendo');convertir(document.getElementById('reductor'),document.getElementById('variables'));" style="cursor:pointer;">Convertir</div>
+</div>
+<div class="info" onClick="this.style.display = 'none'" style="display:none;">
+</center>
 </body>
 </html>
