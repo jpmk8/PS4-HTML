@@ -39,7 +39,7 @@ creditos.forEach(function (c){
 	html += '<div class="credits">' + c.nick + '<br><img src="../image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
 document.getElementById('footer').innerHTML += html;	
-var files = "exploit.js|helpers.js|malloc.js|syscalls.js|syscalls2.js|rop.js|jb-code.js|payload.js";
+var files = "exploit.js|helpers.js|malloc.js|rop.js|syscalls.js|syscalls2.js|variables.js|jb-code.js|payload.js";
 files.split('|').forEach(function (url){
     loadScript('js/'+url);
 });

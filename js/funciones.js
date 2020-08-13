@@ -126,7 +126,7 @@ function convertir(e) {
  		{reg:/db\(\[(\d+,)+\d+\]\)/g},
     ];
     alfaNum = [...'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'];
-	noUsar=/do|if|for/;//palabras reservadas
+	noUsar=/do|if|for|db/;//palabras reservadas
 	pos={i:10,j:9,k:9,n:1};
 	regs.forEach(function (exp){
 //vars.value += exp.reg+'->'+exp.val+'\n';

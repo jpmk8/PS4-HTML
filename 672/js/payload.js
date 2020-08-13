@@ -23,7 +23,7 @@ if(/\.bin/.test(cookies['payload'])){
 }
 else if (/\.js/.test(cookies['payload']))
     loadScript(url)
-
+function aguardandoPlayload(){}
 setTimeout(aguardandoPlayload, 200);
 
 manejoCookies(document.cookie,false);
