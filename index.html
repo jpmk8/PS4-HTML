@@ -8,12 +8,11 @@
 </head>
 
 <body>
-Estamos en desarrollo :D,
 <center style="width: 90%;">
+Estamos en desarrollo :D<br>
   <script>
-    alert(navigator.userAgent);
-    v=versionPS4(navigator.userAgent);
-	document.title+=v;
+    v = versionPS4(navigator.userAgent);
+	document.title+='-'+((v>0)?v:'NoPS4');
     payloads = [
         {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg'},
        /* {id:'DUMP',name:'Dumper',payload:'ps4-dumper-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
@@ -43,11 +42,11 @@ Estamos en desarrollo :D,
     });
     </script>
 </center>
-<center>
-<div>Reducir c-code.js</div><br><textarea id="reductor" style="width:800px;height:400px"></textarea><textarea id="variables" style="width:600px;height:400px"></textarea>
-<br><div onclick="alert('Convirtiendo');convertir(document.getElementById('reductor'),document.getElementById('variables'));" style="cursor:pointer;">Convertir</div>
+
+<div onclick="showHide(document.getElementById('reductor'));" style="cursor:pointer;">Reducir c-code.js</div><br>
+<div id="reductor" style="display:none"><textarea style="width:800px;height:350px"></textarea><textarea style="width:600px;height:350px"></textarea>
+<br><div onclick="alert('Convirtiendo');convertir(document.getElementById('reductor')" style="cursor:pointer;">Convertir</div></div>
 </div>
 <div class="info" onClick="this.style.display = 'none'" style="display:none;">
-</center>
 </body>
 </html>

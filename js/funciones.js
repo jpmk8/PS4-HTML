@@ -40,12 +40,18 @@ function toHEX4(int){
     return hex; //parseInt(hex);
 }
 function versionPS4(ua){
-	version=/PlayStation.*4\.55.*601\.2/.test(ua)?455:
+	return /PlayStation.*4\.55.*601\.2/.test(ua)?455:
             /PlayStation.*5\.05.*601\.2/.test(ua)?505:
 			/PlayStation.*6\.72.*605\.1\.15/.test(ua)?672:0;
 }
-function convertir(text, vars) {
-    regs = [
+function showHide(e){
+	e.style.display = (e.style.display=='none')?'block':'none';
+}
+function convertir(e) {
+	elems=e.getElementsByTagName('textarea');
+	text=elems[0];
+	vars=elems[1];
+    regs=[
 		{reg: /\/\/.*/g,val: ''},
 //		{reg: /(.*)\/\*.*\*\/(.*)/g,val: '$1$2'},
 		{reg: /\s*(\||\=|\?|\+|\-|\/|\*|\<|\>|\,|\;|\:|\]|\[|\(|\)|\{|\})\s*/g,val: '$1'},
