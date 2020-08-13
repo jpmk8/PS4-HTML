@@ -126,6 +126,7 @@ function convertir(e) {
  		{reg:/db\(\[(\d+,)+\d+\]\)/g},
     ];
     alfaNum = [...'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+	noUsar=/do|if|for/;//palabras reservadas
 	pos={i:10,j:9,k:9,n:1};
 	regs.forEach(function (exp){
 //vars.value += exp.reg+'->'+exp.val+'\n';
@@ -148,6 +149,7 @@ function convertir(e) {
 					pos.n = 3;
 				}
 				nom = ((pos.n > 2) ? alfaNum[pos.k] : '') + ((pos.n > 1) ? alfaNum[pos.j] : '') + alfaNum[pos.i];
+				nom=(noUsar.test(nom))?nom+'_':nom;
 				text.value = text.value.replaceAll((v.length>1)?v[0]:v, nom);
 				vars.value += nom + '=' + ((v.length>1)?v[0]:v) + ';\n';
 			}
