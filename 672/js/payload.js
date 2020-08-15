@@ -26,3 +26,5 @@ xhr.send();
 }
 else
     alert("Jailbreak failed! Reboot your PS4 and try again.");
+
+init();

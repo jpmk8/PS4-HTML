@@ -81,7 +81,7 @@ function run(f){
 	var payload=[];
 	xhr.onload = function(e) {
 		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-		script+='\n//'+f+'\n\n'+ccode;
+		script.replace(f,'\n//'+f+'\n\n'+ccode);
 		cargaCompleta=--numArchivos == 0;
 		alert(f+' Cargado');
 	};

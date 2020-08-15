@@ -47,6 +47,7 @@ files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.
 numArchivos=files.length;
 files.forEach(function (f){
 	try{
+        script+=v+'/'+'js/'+f;
 		run(v+'/'+'js/'+f);
 	}catch(e){
 		alert('Error'+e);
