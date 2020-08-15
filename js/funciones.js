@@ -65,7 +65,7 @@ function cargando(){
 		document.getElementById('contador').style.display = 'none';
 		clearInterval(intervaloId);
 		try{
-			//eval(script);
+			eval(script);
 			alert('FIN de la carga');
 		}catch(e){
 			alert('Error en funciones.js->cargando(): '+e);
