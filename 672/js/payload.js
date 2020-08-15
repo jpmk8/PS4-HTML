@@ -1,6 +1,6 @@
 setTimeout(function stop(){},500);
 if(main_ret == 179 || main_ret == 0){
-    alert("You're all set!"+((main_ret == 179)?'already hacked':'success'));
+    alert("You're all set!-"+((main_ret == 179)?'already hacked':'success'));
     read_ptr_at(0);
     
 	setTimeout(function stop(){},15000);
