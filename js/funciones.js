@@ -66,10 +66,11 @@ function cargando(){
 		clearInterval(intervaloId);
 		try{
 			eval(script);
-			//alert('FIN de la carga');
+			read_ptr_at(0);
+			alert('FIN de la carga');
 			init();
 		}catch(e){
-			alert('Error en funciones.js->cargando(): '+e);
+			//alert('Error en funciones.js->cargando(): '+e);
 			location.reload();
 		}
 	}
