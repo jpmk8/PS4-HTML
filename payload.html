@@ -45,9 +45,9 @@ files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.
          (v==505)?"payload.js|vortex.js.gz":
 		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|c-code.js.gz|payload.js":"").split("|");
 numArchivos=files.length;
-files.forEach(function (url){
+files.forEach(function (f){
 	try{
-		run(v+'/'+'js/'+url,script);
+		run(v+'/'+'js/'+f);
 	}catch(e){
 		alert('Error'+e);
 	}

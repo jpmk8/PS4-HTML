@@ -1,3 +1,10 @@
+setTimeout(function stop(){},2000);
+if(main_ret == 179 /* already hacked */ || main_ret == 0 /* success */)
+{
+    alert("You're all set!");
+    read_ptr_at(0);
+
+
 cookies = getCookies();
 var xhr = new XMLHttpRequest();
 xhr.open('GET', cookies['payload'], true);
@@ -16,3 +23,6 @@ xhr.onload = function(e) {
 	write_mem(window.mira_blob_2, payload);
 };
 xhr.send();
+}
+else
+    alert("Jailbreak failed! Reboot your PS4 and try again.");
