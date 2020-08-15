@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html manifest="url.appcache">
 <head>
 <meta charset="utf-8">
@@ -13,6 +13,7 @@
 Estamos en desarrollo :D<br>
   <script>
     v = versionPS4(navigator.userAgent);
+
 	document.title+='-'+((v>0)?v:'NoPS4');
     payloads = [
         {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg'},
@@ -31,7 +32,7 @@ Estamos en desarrollo :D<br>
             else{
                 if(v!=0){
                     manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
-                    location.href = ( p.hasOwnProperty("payload") ) ?  v+'/payload.html' : 'index.html';
+                    location.href = ( p.hasOwnProperty("payload") ) ?  '/payload.html' : 'index.html';
                 }
                 else{
                     var elm = document.getElementsByClassName('info').item(0);
@@ -44,10 +45,6 @@ Estamos en desarrollo :D<br>
     </script>
 </center>
 
-<div onclick="showHide(document.getElementById('reductor'));" style="cursor:pointer;">Reducir c-code.js</div><br>
-<div id="reductor" style="display:none"><textarea style="width:800px;height:350px"></textarea><textarea style="width:600px;height:350px"></textarea>
-<br><div onclick="alert('Convirtiendo');convertir(document.getElementById('reductor'))" style="cursor:pointer;">Convertir</div></div>
-</div>
 <div class="info" onClick="this.style.display = 'none'" style="display:none;">
 </body>
 </html>

@@ -2,24 +2,26 @@
 <html>
 <head>
 <title>PS4Jailbreak</title>
-<link rel="stylesheet" href="../css/estilo.css"/>
+<link rel="stylesheet" href="css/estilo.css"/>
+<link rel="icon" type="image/png" href="image/favicon.png">
 <meta name=viewport content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-<script src="../js/funciones.js"></script>
+<script src="js/pako.min.js">//Agradecimientos a PAKO, https://github.com/nodeca/pako</script>
+<script src="js/funciones.js"></script>
 </head>
 <body style="margin:0">
-<div id="loader" class="loader"></div>
 <div id="done" class="info" style="display:none">Done.</div>
 <div id="fail" class="info" style="display:none">Fail!</div>
-<div id="footer">Agradecimientos a:<br>
-  <br>
-</div>
+<div id="footer">Agradecimientos a:<br><br></div>
+<div id="contador" style="display:block">0%<div></div></div>
 <script>
-var creditos = [
+v = versionPS4(navigator.userAgent);
+creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
 	{nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
 	{nick:'Vortex',logo:'vortex.jpg',info:'Kernel exploid, payloads(HEN, FTP, Dumper, Backup)'},
+	{nick:'SiSTR0',logo:'SiSTR0.jpg',info:'payload(HEN)'},
 	{nick:'Stooged',logo:'stooged.jpg',info:'payload Enable VR, AppToUSB, DB_SG_Backup'},
 	{nick:'CFWProphet',logo:'cfwprophet.jpg',info:'bin2js, Fake_PKG, libhb-master, free-ps2-pub-gen'},
 	{nick:'2much4ux',logo:'2much4ux.jpg',info:'payloads (Debug Settings, Full Debug Settings, Permanent Webbrowser Patch)'},
@@ -34,16 +36,22 @@ var creditos = [
 	{nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin necesidad de convertir, reducción del archivo c-code.js'},
 	{nick:'anonymous',logo:'anonymous.jpg',info:'Todos aquellos que se esfuerzan por la escena :)'},
 ];
-var html = '';
+html = '';
 creditos.forEach(function (c){
-	html += '<div class="credits">' + c.nick + '<br><img src="../image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
+	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
 document.getElementById('footer').innerHTML += html;	
-var files = "exploit.js|helpers.js|malloc.js|rop.js|syscalls.js|syscalls2.js|variables.js|jb-code.js|payload.js";
-files.split('|').forEach(function (url){
-    loadScript('js/'+url);
+files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
+         (v==505)?"payload.js|vortex.js.gz":
+		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|c-code.js.gz|payload.js":"").split("|");
+numArchivos=files.length;
+files.forEach(function (url){
+	try{
+		run(v+'/'+'js/'+url,script);
+	}catch(e){
+		alert('Error'+e);
+	}
 });
-
 </script>
 </body>
 </html>
