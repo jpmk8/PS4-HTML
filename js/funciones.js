@@ -67,6 +67,7 @@ function cargando(){
 		try{
 			eval(script);
 			alert('FIN de la carga');
+			init();
 		}catch(e){
 			alert('Error en funciones.js->cargando(): '+e);
 		}
@@ -82,7 +83,7 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-		script = script.replace(f, '\n//'+f+'\n\n'+ccode);
+		script = script.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
 		document.getElementById("msg").innerHTML=script+'<rb>';
 		cargaCompleta=--numArchivos == 0;
 		}catch(e){
