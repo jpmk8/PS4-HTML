@@ -32,7 +32,7 @@ Estamos en desarrollo :D<br>
             else{
                 if(v!=0){
                     manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
-                    location.href = ( p.hasOwnProperty("payload") ) ?  '/payload.html' : 'index.html';
+                    location.href = ( p.hasOwnProperty("payload") ) ?  'payload.html' : 'index.html';
                 }
                 else{
                     var elm = document.getElementsByClassName('info').item(0);
