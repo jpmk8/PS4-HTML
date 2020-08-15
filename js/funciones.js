@@ -68,7 +68,7 @@ function cargando(){
 			eval(script);
 			alert('FIN de la carga');
 		}catch(e){
-			//alert('Error:'+e);
+			alert('Error:'+e);
 		}
 	}
 		
@@ -83,6 +83,7 @@ function run(f){
 		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 		script+='\n//'+f+'\n\n'+ccode;
 		cargaCompleta=--numArchivos == 0;
+		alert(f+' Cargado');
 	};
 	xhr.send();	
 }
