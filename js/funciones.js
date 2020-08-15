@@ -66,10 +66,11 @@ function cargando(){
 		clearInterval(intervaloId);
 		try{
 			eval(script);
-			alert('FIN de la carga');
+			//alert('FIN de la carga');
 			init();
 		}catch(e){
 			alert('Error en funciones.js->cargando(): '+e);
+			location.reload();
 		}
 	}
 		
@@ -83,8 +84,8 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-		script = script.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
-		document.getElementById("msg").innerHTML=script+'<rb>';
+		script = script.replace(f, '\n//'+f+'\n\n'+ccode);
+		//document.getElementById("msg").innerHTML=script+'<rb>';
 		cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			alert('Error en funciones.js->run(): '+e);

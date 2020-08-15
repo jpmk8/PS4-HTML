@@ -1,10 +1,10 @@
-setTimeout(function stop(){},2000);
+setTimeout(function stop(){},500);
 if(main_ret == 179 /* already hacked */ || main_ret == 0 /* success */)
 {
-    alert("You're all set!");
+    alert("You're all set!"+((main_ret == 179)?'already hacked':'success'));
     read_ptr_at(0);
 
-
+setTimeout(function stop(){},500);
 cookies = getCookies();
 var xhr = new XMLHttpRequest();
 xhr.open('GET', cookies['payload'], true);
