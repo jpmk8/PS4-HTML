@@ -57,18 +57,18 @@ function init(){
 	cargaCompleta=false;
 	script='';
 }
-setInterval(cargando, 1000);
+intervaloId=setInterval(cargando, 1000);
 function cargando(){
 	if(!cargaCompleta){
 		document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	}else{
 		document.getElementById('contador').style.display = 'none';
-		clearInterval(cargando);
+		clearInterval(intervaloId);
 		try{
-			eval(script);
+			//eval(script);
 			alert('FIN de la carga');
 		}catch(e){
-			alert('Error:'+e);
+			alert('Error en funciones.js->cargando(): '+e);
 		}
 	}
 		
@@ -80,10 +80,14 @@ function run(f){
 	xhr.responseType = (/\.js$/.test(f))?'text':'arraybuffer';
 	var payload=[];
 	xhr.onload = function(e) {
+		try{
 		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-		script.replace(f,'\n//'+f+'\n\n'+ccode);
+		script = script.replace(f, '\n//'+f+'\n\n'+ccode);
+		document.getElementById("msg").innerHTML=script+'<rb>';
 		cargaCompleta=--numArchivos == 0;
-		alert(f+' Cargado');
+		}catch(e){
+			alert('Error en funciones.js->run(): '+e);
+		}
 	};
 	xhr.send();	
 }

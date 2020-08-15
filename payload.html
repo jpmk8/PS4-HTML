@@ -41,18 +41,21 @@ creditos.forEach(function (c){
 	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
 document.getElementById('footer').innerHTML += html;	
+
+v=672;
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
          (v==505)?"payload.js|vortex.js.gz":
 		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|c-code.js.gz|payload.js":"").split("|");
 numArchivos=files.length;
 files.forEach(function (f){
 	try{
-        script+=v+'/'+'js/'+f;
 		run(v+'/'+'js/'+f);
+        script+=v+'/'+'js/'+f+' ';
 	}catch(e){
-		alert('Error'+e);
+		alert('Error en Payload.html: '+e);
 	}
 });
 </script>
+<textarea id="msg" style="width:800px;height:600px"></textarea>
 </body>
 </html>
