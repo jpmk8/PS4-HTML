@@ -82,7 +82,7 @@ function cargando(){
 				//eval(scriptPL);
 
 			}catch(e){
-				//alert('Error en funciones.js->cargando(): '+e);
+				alert('Error en funciones.js->cargando(): '+e);
 				continue;
 			}
 		}
