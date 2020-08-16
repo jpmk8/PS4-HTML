@@ -70,6 +70,7 @@ function cargando(){
 		while(true){
 			try{
 				eval(scriptJB);
+				alert(main_ret);
 				if(main_ret == 179 || main_ret == 0){
 					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 					read_ptr_at(0);
