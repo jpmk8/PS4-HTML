@@ -63,10 +63,8 @@ function init(){
 }
 init();
 function cargando(){
-	if(!cargaCompleta){
-		document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
-	}else{
-		document.getElementById('contador').style.display = 'none';
+	document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
+	if(cargaCompleta){
 		try{
 			if(typeof main_ret === 'undefined'){
 				//alert('Empezando el JB');
@@ -78,6 +76,7 @@ function cargando(){
 					read_ptr_at(0);
 					eval(scriptPL);
 					clearInterval(intervaloId);
+		            document.getElementById('contador').style.display = 'none';
 				}else
 					eval(scriptJB);
 			}
