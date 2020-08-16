@@ -70,28 +70,31 @@ function cargando(){
 //	}
 } 
 function load(){
-		try{
-			if(typeof main_ret === 'undefined'){
-				eval(scriptJB);
-				alert('Terminano el JB '+main_ret);
-			}
-			if(main_ret == 179 || main_ret == 0){
-				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
-				document.getElementById('done').style.display = 'block';
-				document.getElementById('contador').style.display = 'none';
-				alert('Empezando Payload '+main_ret);
-				read_ptr_at(0);
-				eval(scriptPL);
-				//clearInterval(intIdContador);
-				//clearInterval(intIdJB);
-			}else{
-				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-				document.getElementById('fail').style.display = 'block';
-			}
-		}catch(e){
-			alert('Error en funciones.js->load(): '+e);
-			load();
+	try{
+		msg.value+='Tipo de main_ret:'+(typeof main_ret)+'\n';
+		if(typeof main_ret === 'undefined'){
+			eval(scriptJB);
+			msg.value+='Terminano el JB '+main_ret;
 		}
+		if(main_ret == 179 || main_ret == 0){
+			document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+			document.getElementById('done').style.display = 'block';
+			document.getElementById('contador').style.display = 'none';
+			msg.value+='Empezando Payload '+main_ret;
+			read_ptr_at(0);
+			msg.value+='//------------------------------';
+			eval(scriptPL);
+			//clearInterval(intIdContador);
+			//clearInterval(intIdJB);
+		}else{
+			document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+			document.getElementById('fail').style.display = 'block';
+		}
+	}catch(e){
+		msg.value+='Error en funciones.js->load(): '+e+'\n';
+		//alert('Error en funciones.js->load(): '+e);
+		load();
+	}
 }
 function run(f){
 	var xhr = new XMLHttpRequest();
@@ -101,12 +104,14 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
+			ccode = ccode.replace(/(.*)(\r\n)/g,'msg.value+="$1";$2$1$2');
 			scriptJB = scriptJB.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
 			scriptPL = scriptPL.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;
 			cargaCompleta=--numArchivos == 0;
 		}catch(e){
-			alert('Error en funciones.js->run(): '+e);
+			msg.value+='Error en funciones.js->run(): '+e+'\n';
+            //alert('Error en funciones.js->run(): '+e);
 		}
 	};
 	xhr.send();	
