@@ -74,21 +74,19 @@ function load(){
 			if(typeof main_ret === 'undefined'){
 				eval(scriptJB);
 				alert('Terminano el JB '+main_ret);
-
-				if(main_ret == 179 || main_ret == 0){
-					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
-					document.getElementById('done').style.display = 'block';
-					document.getElementById('contador').style.display = 'none';
-					read_ptr_at(0);
-					eval(scriptPL);
-					clearInterval(intIdContador);
-					clearInterval(intIdJB);
-					//break;
-				}else{
-					document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-					document.getElementById('fail').style.display = 'block';
-				}
-
+			}
+			if(main_ret == 179 || main_ret == 0){
+				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+				document.getElementById('done').style.display = 'block';
+				document.getElementById('contador').style.display = 'none';
+				read_ptr_at(0);
+				eval(scriptPL);
+				//clearInterval(intIdContador);
+				//clearInterval(intIdJB);
+				//break;
+			}else{
+				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				document.getElementById('fail').style.display = 'block';
 			}
 		}catch(e){
 			alert('Error en funciones.js->load(): '+e);
