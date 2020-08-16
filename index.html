@@ -9,9 +9,19 @@
 </head>
 
 <body>
+<div id="contador" style="display:block">0%<div></div></div>
 <center style="width: 90%;">
 Estamos en desarrollo :D<br>
   <script>
+	applicationCache.ondownloading = function(){
+            alert("Caching started !!")
+	};
+	applicationCache.onprogress = function(a){
+            document.getElementById("contador").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
+	};
+	applicationCache.oncached=function(){
+            alert("Page Cached!!")
+    };
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
