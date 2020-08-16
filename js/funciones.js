@@ -70,9 +70,8 @@ function cargando(){
 //	}
 } 
 function load(){
-    while(true){
 		try{
-			document.getElementById("msg").innerHTML=scriptJB+'<rb>';
+			document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;
 			if(typeof main_ret === 'undefined'){
 				eval(scriptJB);
 				alert('Terminano el JB '+(typeof main_ret));
@@ -89,15 +88,14 @@ function load(){
 					eval(scriptPL);
 					clearInterval(intIdContador);
 					clearInterval(intIdJB);
-					break;
+					//break;
 				}else
 					eval(scriptJB);
 			}
 		}catch(e){
-			//alert('Error en funciones.js->load(): '+e);
-			continue;
+			alert('Error en funciones.js->load(): '+e);
+			//continue;
 		}
-	}
 }
 function run(f){
 	var xhr = new XMLHttpRequest();
