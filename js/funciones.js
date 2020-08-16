@@ -69,7 +69,7 @@ function cargando(){
 		document.getElementById('contador').style.display = 'none';
 		while(true){
 			try{
-				alert((typeof main_ret === undefined)?'Empezando el JB':main_ret);
+				alert((typeof main_ret === 'undefined')?'Empezando el JB':main_ret);
 				if(main_ret == 179 || main_ret == 0){
 					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 					read_ptr_at(0);
