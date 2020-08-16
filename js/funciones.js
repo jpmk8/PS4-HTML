@@ -106,8 +106,8 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-			scriptJB = scriptJB.replace(f, '\nalert('+f+');//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nalert('+f+');//'+f+'\n\n'+ccode);
+			scriptJB = scriptJB.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=script+'<rb>';
 			cargaCompleta=--numArchivos == 0;
 		}catch(e){
