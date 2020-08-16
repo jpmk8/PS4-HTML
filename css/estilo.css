@@ -20,7 +20,7 @@ center{
     padding: 5px;
     margin: 10px;
  }
-.bt, .info, .credits{
+.bt, #info, .credits{
     position: relative;
     color:#0935AD;
     text-align:center;
@@ -28,7 +28,7 @@ center{
 	-webkit-box-shadow: 0px 3px 4.7px 0.3px rgba(0, 0, 0, 0.24);
 	transition: box-shadow 0.4s ease-in-out;
 }
-.bt:hover, .info:hover, .credits:hover{
+.bt:hover, #info:hover, .credits:hover{
     background-color:#FCFCFC;
  	cursor:pointer;
     -webkit-animation:border 2s infinite;
@@ -36,7 +36,7 @@ center{
  	transition: box-shadow 0.4s ease-in-out;
 }
 
-.info {
+#info {
     font-size: 30px;
     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color:#FCFCFC;
@@ -48,7 +48,7 @@ center{
     transform: translate(-50%, -50%);
 }
 
-.info:hover{
+#info:hover{
     overflow: hidden;
 }
 #footer{

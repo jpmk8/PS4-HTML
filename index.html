@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="Cache.manifest">
+<html manifest="URL.appcache">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/estilo.css"/>
@@ -9,19 +9,21 @@
 </head>
 
 <body>
-<div id="contador" style="display:block">0%<div></div></div>
+<div id="cache">0%</div>
+<div id="contador" style="display:none">0%<div></div></div>
 <center style="width: 90%;">
 Estamos en desarrollo :D<br>
   <script>
 	window.applicationCache.ondownloading = function(){
-            alert("Caching started !!")
+		document.getElementById('info').innerHTML = "Cacheando la página";
 	};
 	window.applicationCache.onprogress = function(a){
-            document.getElementById("contador").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
+		document.getElementById("cache").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
 	};
 	window.applicationCache.oncached=function(){
-            alert("Page Cached!!")
+		document.getElementById('info').innerHTML = "Cache finalizado";
     };
+	
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
@@ -45,9 +47,8 @@ Estamos en desarrollo :D<br>
                     location.href = ( p.hasOwnProperty("payload") ) ?  'payload.html' : 'index.html';
                 }
                 else{
-                    var elm = document.getElementsByClassName('info').item(0);
-                    elm.innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
-                    elm.style.display = 'block';
+                    document.getElementById('info').innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
+                    document.getElementById('info').style.display = 'block';
                 }
             }
         };
@@ -55,6 +56,6 @@ Estamos en desarrollo :D<br>
     </script>
 </center>
 
-<div class="info" onClick="this.style.display = 'none'" style="display:none;">
+<div id="info" onClick="this.style.display = 'none'" style="display:none;">
 </body>
 </html>
