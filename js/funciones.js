@@ -66,7 +66,7 @@ init();
 function cargando(){
 	document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	if(cargaCompleta){
-		intIdJB=setInterval(load, 15000);
+		intIdJB=setInterval(load, 3000);
 	}
 } 
 function load(){
