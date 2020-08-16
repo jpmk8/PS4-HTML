@@ -66,7 +66,8 @@ init();
 function cargando(){
 	document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	if(cargaCompleta){
-		intIdJB=setInterval(load, 3000);
+		//intIdJB=setInterval(load, 3000);
+		load();
 	}
 } 
 function load(){
@@ -92,7 +93,7 @@ function load(){
 					eval(scriptJB);
 			}
 		}catch(e){
-			//alert('Error en funciones.js->cargando(): '+e);
+			alert('Error en funciones.js->load(): '+e);
 			continue;
 		}
 	}
