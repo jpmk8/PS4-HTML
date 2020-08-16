@@ -70,9 +70,16 @@ function cargando(){
 		while(true){
 			try{
 				eval(scriptJB);
-				load();
-				eval(scriptPL);
-				clearInterval(intervaloId);
+				if(main_ret == 179 || main_ret == 0){
+					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+					read_ptr_at(0);
+					clearInterval(intervaloId);
+					break;
+				}
+				else
+					document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				//eval(scriptPL);
+
 			}catch(e){
 				//alert('Error en funciones.js->cargando(): '+e);
 				continue;
