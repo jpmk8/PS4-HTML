@@ -69,20 +69,18 @@ function cargando(){
 		document.getElementById('contador').style.display = 'none';
 		while(true){
 			try{
-				alert((typeof main_ret === 'undefined')?'Empezando el JB':main_ret);
-				if(main_ret == 179 || main_ret == 0){
+				if(typeof main_ret === 'undefined'){
+					alert('Empezando el JB');
+					eval(scriptJB);
+					//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				}
+				else if(main_ret == 179 || main_ret == 0){
 					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 					read_ptr_at(0);
 					eval(scriptPL);
 					clearInterval(intervaloId);
 					break;
 				}
-				else{
-					eval(scriptJB);
-					document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-				}
-				
-
 			}catch(e){
 				alert('Error en funciones.js->cargando(): '+e);
 				continue;
