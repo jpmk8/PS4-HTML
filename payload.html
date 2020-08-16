@@ -1,21 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>PS4Jailbreak</title>
-<link rel="stylesheet" href="css/estilo.css"/>
-<link rel="icon" type="image/png" href="image/favicon.png">
-<meta name=viewport content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<script src="js/pako.min.js">//Agradecimientos a PAKO, https://github.com/nodeca/pako</script>
-<script src="js/funciones.js"></script>
+	<title>PS4Jailbreak</title>
+	<link rel="stylesheet" href="css/estilo.css"/>
+	<link rel="icon" type="image/png" href="image/favicon.png">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<script src="js/pako.min.js">//Agradecimientos a PAKO, https://github.com/nodeca/pako</script>
+	<script src="js/funciones.js"></script>
 </head>
+
 <body style="margin:0">
+<textarea id="msg" style="width:800px;height:600px"></textarea>
 <div id="done" class="info" style="display:none">Done.</div>
 <div id="fail" class="info" style="display:none">Fail!</div>
 <div id="footer">Agradecimientos a:<br><br></div>
 <div id="contador" style="display:block">0%<div></div></div>
 <script>
 v = versionPS4(navigator.userAgent);
+msg = document.getElementById("msg");
+
 /*creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
@@ -68,6 +72,5 @@ files.forEach(function (f){
 });
 setTimeout(load, 2000);
 </script>
-<!-- <textarea id="msg" style="width:800px;height:600px"></textarea> -->
 </body>
 </html>
