@@ -42,15 +42,26 @@ creditos.forEach(function (c){
 });
 document.getElementById('footer').innerHTML += html;	
 
-v=672;
+//v=672;//borrar
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
          (v==505)?"payload.js|vortex.js.gz":
-		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|jb-code.js.gz|mira.js.gz|payload.js|mira-code.js.gz":"").split("|");
+		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|[JB]jb-code.js.gz|[PL]mira.js.gz|[PL]payload.js|[PL]mira-code.js.gz":"").split("|");
 numArchivos=files.length;
 files.forEach(function (f){
 	try{
-		run(v+'/'+'js/'+f);
-        script+=v+'/'+'js/'+f+' ';
+	    nom=v+'/'+'js/'+f;
+		if(/\[JB\]/.test(nom)){
+			nom=nom.replace(/\[JB\](.*)/,'$1');
+			scriptJB+=nom;
+		}
+		else if(/\[PL\]/.test(nom)){
+			nom=nom.replace(/\[PL\](.*)/,'$1');
+			scriptPL+=nom;
+		}else{
+			scriptJB+=nom;
+			scriptPL+=nom;
+		}
+		run(nom);
 	}catch(e){
 		alert('Error en Payload.html: '+e);
 	}

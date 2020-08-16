@@ -41,8 +41,8 @@ function toHEX4(int){
     return hex; //parseInt(hex);
 }
 function versionPS4(ua){
-	return /PlayStation.*4\.55.*601\.2/.test(ua)?455:
-            /PlayStation.*5\.05.*601\.2/.test(ua)?505:
+	return  /PlayStation.*4\.55.*601\.2/.test(ua)?455:
+			/PlayStation.*5\.05.*601\.2/.test(ua)?505:
 			/PlayStation.*6\.72.*605\.1\.15/.test(ua)?672:0;
 }
 function showHide(e){
@@ -51,32 +51,44 @@ function showHide(e){
 
 i = 0;
 cargaCompleta=false;
-script='';
+scriptJB='';
+scriptPL='';
+intervaloId=-1;
 function init(){
 	i = 0;
 	cargaCompleta=false;
-	script='';
+	scriptJB='';
+	scriptPL='';
+	intervaloId=setInterval(cargando, 700);;
 }
-intervaloId=setInterval(cargando, 1000);
+init();
 function cargando(){
 	if(!cargaCompleta){
 		document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	}else{
 		document.getElementById('contador').style.display = 'none';
-		clearInterval(intervaloId);
-		try{
-			eval(script);
-			read_ptr_at(0);
-			alert('FIN de la carga');
-			init();
-		}catch(e){
-			//alert('Error en funciones.js->cargando(): '+e);
-			location.reload();
+		while(true){
+			try{
+				eval(scriptJB);
+				load();
+				eval(scriptPL);
+				clearInterval(intervaloId);
+			}catch(e){
+				//alert('Error en funciones.js->cargando(): '+e);
+				continue;
+			}
 		}
 	}
 		
 } 
-
+function load(){
+	if(main_ret == 179 || main_ret == 0){
+		document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+		read_ptr_at(0);
+	}
+	else
+		document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+}
 function run(f){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', f, true);
@@ -84,10 +96,11 @@ function run(f){
 	var payload=[];
 	xhr.onload = function(e) {
 		try{
-		ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-		script = script.replace(f, '\n//'+f+'\n\n'+ccode);
-		//document.getElementById("msg").innerHTML=script+'<rb>';
-		cargaCompleta=--numArchivos == 0;
+			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
+			scriptJB = scriptJB.replace(f, '\n//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\n//'+f+'\n\n'+ccode);
+			//document.getElementById("msg").innerHTML=script+'<rb>';
+			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			alert('Error en funciones.js->run(): '+e);
 		}
