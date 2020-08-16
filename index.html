@@ -9,19 +9,19 @@
 </head>
 
 <body>
-<div id="cache">0%</div>
+<div id="cache" style="display:none">0%</div>
 <div id="contador" style="display:none">0%<div></div></div>
 <center style="width: 90%;">
 Estamos en desarrollo :D<br>
   <script>
 	window.applicationCache.ondownloading = function(){
-		document.getElementById('info').innerHTML = "Cacheando la página";
+		document.getElementById('cache').style.display = 'block';
 	};
 	window.applicationCache.onprogress = function(a){
 		document.getElementById("cache").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
 	};
 	window.applicationCache.oncached=function(){
-		document.getElementById('info').innerHTML = "Cache finalizado";
+		document.getElementById('cache').style.display = 'none';
     };
 	
     v = versionPS4(navigator.userAgent);
@@ -35,6 +35,8 @@ Estamos en desarrollo :D<br>
         {id:'APP2USB',name:'AppToUsb',payload:'AppToUsbv2.bin',credito:'Stooged',logo:'stooged.jpg'},
        */ {id:'Google',name:'Buscador Google',url:'http://google.com',logo:'google.png'},
     ];
+
+    v=(v==0)?672:v;//Solo para test en PC
     
     payloads.forEach(function (p){
         document.write('<div id="'+p.id+'" class="bt">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
