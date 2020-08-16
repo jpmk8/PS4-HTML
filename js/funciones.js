@@ -67,27 +67,24 @@ function cargando(){
 		document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	}else{
 		document.getElementById('contador').style.display = 'none';
-		while(true){
-			try{
-				if(typeof main_ret === 'undefined'){
-					alert('Empezando el JB');
-					eval(scriptJB);
-					//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-				}
-				else if(main_ret == 179 || main_ret == 0){
+		try{
+			if(typeof main_ret === 'undefined'){
+				//alert('Empezando el JB');
+				eval(scriptJB);
+				//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+			}else{
+				if(main_ret == 179 || main_ret == 0){
 					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 					read_ptr_at(0);
 					eval(scriptPL);
 					clearInterval(intervaloId);
-					break;
-				}
-			}catch(e){
-				alert('Error en funciones.js->cargando(): '+e);
-				continue;
+				}else
+					eval(scriptJB);
 			}
+		}catch(e){
+			//alert('Error en funciones.js->cargando(): '+e);
 		}
 	}
-		
 } 
 function load(){
 	if(main_ret == 179 || main_ret == 0){
