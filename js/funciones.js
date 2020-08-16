@@ -76,7 +76,8 @@ function load(){
 			if(typeof main_ret === 'undefined'){
 				//alert('Empezando el JB');
 				eval(scriptJB);
-				//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				document.getElementById('fail').style.display = 'block';
 			}else{
 				alert(main_ret);
 				if(main_ret == 179 || main_ret == 0){
