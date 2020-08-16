@@ -9,7 +9,7 @@ xhr.onload = function(e) {
 	var payload = new Uint8Array(nuevaLen);
 	for(var i = 0;i < buffer.length;i++)
 		payload[i]=buffer[i];
-//		payload = new Uint32Array(newbuffer.buffer);
+	payload = new Uint32Array(payload.buffer);
 	manejoCookies(document.cookie,false);
 	window.mira_blob_2_len = nuevaLen;
 	window.mira_blob_2 = malloc(window.mira_blob_2_len);
