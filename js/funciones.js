@@ -72,6 +72,7 @@ function cargando(){
 function load(){
     while(true){
 		try{
+			document.getElementById("msg").innerHTML=scriptJB+'<rb>';
 			if(typeof main_ret === 'undefined'){
 				eval(scriptJB);
 				alert('Terminano el JB '+(typeof main_ret));
@@ -93,7 +94,7 @@ function load(){
 					eval(scriptJB);
 			}
 		}catch(e){
-			alert('Error en funciones.js->load(): '+e);
+			//alert('Error en funciones.js->load(): '+e);
 			continue;
 		}
 	}
@@ -106,9 +107,8 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-			scriptJB = scriptJB.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nalert("'+f+'");//'+f+'\n\n'+ccode);
-			//document.getElementById("msg").innerHTML=script+'<rb>';
+			scriptJB = scriptJB.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
 			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			alert('Error en funciones.js->run(): '+e);
