@@ -53,45 +53,43 @@ i = 0;
 cargaCompleta=false;
 scriptJB='';
 scriptPL='';
-intervaloId=-1;
+intIdContador=-1;
+intIdJB=-1;
 function init(){
 	i = 0;
 	cargaCompleta=false;
 	scriptJB='';
 	scriptPL='';
-	intervaloId=setInterval(cargando, 700);;
+	intervaloId=setInterval(cargando, 700);
 }
 init();
 function cargando(){
 	document.getElementById('contador').innerHTML = document.getElementById('contador').innerHTML.replace(/\d+/,(i<100)?i++:i=0);
 	if(cargaCompleta){
-		try{
-			if(typeof main_ret === 'undefined'){
-				//alert('Empezando el JB');
-				eval(scriptJB);
-				//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-			}else{
-				if(main_ret == 179 || main_ret == 0){
-					document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
-					read_ptr_at(0);
-					eval(scriptPL);
-					clearInterval(intervaloId);
-		            document.getElementById('contador').style.display = 'none';
-				}else
-					eval(scriptJB);
-			}
-		}catch(e){
-			//alert('Error en funciones.js->cargando(): '+e);
-		}
+		intIdJB=setInterval(load, 2000);
 	}
 } 
 function load(){
-	if(main_ret == 179 || main_ret == 0){
-		document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
-		read_ptr_at(0);
+	try{
+		if(typeof main_ret === 'undefined'){
+			//alert('Empezando el JB');
+			eval(scriptJB);
+			//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+		}else{
+			if(main_ret == 179 || main_ret == 0){
+				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+				document.getElementById('done').style.display = 'block';
+				document.getElementById('contador').style.display = 'none';
+				read_ptr_at(0);
+				eval(scriptPL);
+				clearInterval(intIdContador);
+				clearInterval(intIdJB);
+			}else
+				eval(scriptJB);
+		}
+	}catch(e){
+		//alert('Error en funciones.js->cargando(): '+e);
 	}
-	else
-		document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
 }
 function run(f){
 	var xhr = new XMLHttpRequest();
