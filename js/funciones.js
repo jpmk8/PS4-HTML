@@ -106,7 +106,7 @@ function run(f){
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 			scriptJB = scriptJB.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
 			scriptPL = scriptPL.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
-			document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;
+			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;
 			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			alert('Error en funciones.js->run(): '+e);

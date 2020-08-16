@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="url.appcache">
+<html manifest="Cache.manifest">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/estilo.css"/>
@@ -13,13 +13,13 @@
 <center style="width: 90%;">
 Estamos en desarrollo :D<br>
   <script>
-	applicationCache.ondownloading = function(){
+	window.applicationCache.ondownloading = function(){
             alert("Caching started !!")
 	};
-	applicationCache.onprogress = function(a){
+	window.applicationCache.onprogress = function(a){
             document.getElementById("contador").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
 	};
-	applicationCache.oncached=function(){
+	window.applicationCache.oncached=function(){
             alert("Page Cached!!")
     };
     v = versionPS4(navigator.userAgent);
