@@ -16,7 +16,7 @@
 <div id="contador" style="display:block">0%<div></div></div>
 <script>
 v = versionPS4(navigator.userAgent);
-creditos = [
+/*creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
 	{nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
@@ -40,7 +40,7 @@ html = '';
 creditos.forEach(function (c){
 	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
-document.getElementById('footer').innerHTML += html;	
+document.getElementById('footer').innerHTML += html;*/
 
 v=672;//borrar
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
