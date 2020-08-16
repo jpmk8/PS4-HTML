@@ -77,6 +77,7 @@ function load(){
 			//document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
 		}else{
 			if(main_ret == 179 || main_ret == 0){
+				alert(main_ret);
 				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 				document.getElementById('done').style.display = 'block';
 				document.getElementById('contador').style.display = 'none';
