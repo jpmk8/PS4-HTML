@@ -79,18 +79,18 @@ function load(){
 				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 				document.getElementById('done').style.display = 'block';
 				document.getElementById('contador').style.display = 'none';
+				alert('Empezando Payload '+main_ret);
 				read_ptr_at(0);
 				eval(scriptPL);
 				//clearInterval(intIdContador);
 				//clearInterval(intIdJB);
-				//break;
 			}else{
 				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
 				document.getElementById('fail').style.display = 'block';
 			}
 		}catch(e){
 			alert('Error en funciones.js->load(): '+e);
-			//continue;
+			load();
 		}
 }
 function run(f){
