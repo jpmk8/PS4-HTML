@@ -98,7 +98,7 @@ function load(){
 			document.getElementById('fail').style.display = 'block';
 		}
 	}catch(e){
-		msg.value+='Error en funciones.js->load(): '+e+'\n';
+		msg.value+='\nError en funciones.js->load(): '+e+'\n';
 		//alert('Error en funciones.js->load(): '+e);
 		//load();
 	}
@@ -116,7 +116,7 @@ function run(f){
 			scriptPL = scriptPL.replace(f, '\nmsg.value+="'+f+'\\n";//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
-			msg.value+='Error en funciones.js->run(): '+e+'\n';
+			msg.value+='\nError en funciones.js->run(): '+e+'\n';
             //alert('Error en funciones.js->run(): '+e);
 		}
 	};
