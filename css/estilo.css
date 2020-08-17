@@ -59,7 +59,18 @@ center{
     padding:10px;
     transform: translate(-50%, -50%);
 }
-
+#msg{
+	position:absolute;
+	left:20;
+	top:20;
+	width:40%;
+	height:100%;
+	overflow: auto;
+	background-color:hsla(0,0%,69%,0.55);
+	font-size: 16px;
+	font-family:Courier, "Lucida Console", monospace;
+	z-index: 10;
+}
 #info:hover{
     overflow: hidden;
 }
