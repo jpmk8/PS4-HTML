@@ -49,7 +49,7 @@ document.getElementById('footer').innerHTML += html;*/
 v=(v==0)?672:v;//Solo para test en PC
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
          (v==505)?"payload.js|vortex.js.gz":
-		 (v==672)?"[JB]exploit.js.gz|[JB]helpers.js.gz|[JB]malloc.js.gz|[JB]rop.js.gz|[JB]syscalls.js.gz|[JB]syscalls2.js.gz|[JB]jb-code.js.gz|[PL]mira.js.gz|[PL]ps4-hen-vtx.js.gz|[PL]mira-code.js.gz":"").split("|");//[PL]payload.js
+		 (v==672)?"[JB]exploit.js.gz|[JB]helpers.js.gz|[JB]malloc.js.gz|[JB]rop.js|[JB]syscalls.js.gz|[JB]syscalls2.js.gz|[JB]jb-code.js.gz|[PL]mira.js.gz|[PL]ps4-hen-vtx.js.gz|[PL]mira-code.js.gz":"").split("|");//[PL]payload.js
 numArchivos=files.length;
 files.forEach(function (f){
 	try{
