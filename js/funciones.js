@@ -112,8 +112,8 @@ function run(f){
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 			//code = ccode.replace(/(.*;)$/g,'\n$1\nconsole.log\("--$1"\);\n');
-			scriptJB = scriptJB.replace(f, '\nmsg.value+="'+f+'";//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nmsg.value+="'+f+'";//'+f+'\n\n'+ccode);
+			scriptJB = scriptJB.replace(f, '\nmsg.value+="'+f+'\\n";//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\nmsg.value+="'+f+'\\n";//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			msg.value+='Error en funciones.js->run(): '+e+'\n';
