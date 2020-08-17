@@ -93,7 +93,7 @@ function load(){
 	}catch(e){
 		msg.value+='Error en funciones.js->load(): '+e+'\n';
 		//alert('Error en funciones.js->load(): '+e);
-		//load();
+		load();
 	}
 }
 line=0;
