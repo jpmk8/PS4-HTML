@@ -96,6 +96,7 @@ function load(){
 		//load();
 	}
 }
+line=0;
 function run(f){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', f, true);
@@ -104,11 +105,10 @@ function run(f){
 	xhr.onload = function(e) {
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
-			ccode = ccode.replace(/(.*)(\r\n)/g,'msg.value+="$1";$2$1$2');
-			scriptJB = scriptJB.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\n//alert("'+f+'");//'+f+'\n\n'+ccode);
-			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;
-			cargaCompleta=--numArchivos == 0;
+			//code = ccode.replace(/(.*;)$/g,'\n$1\nconsole.log\("--$1"\);\n');
+			scriptJB = scriptJB.replace(f, '\nconsole.log("'+f+'");//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\nconsole.log("'+f+'");//'+f+'\n\n'+ccode);
+			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			msg.value+='Error en funciones.js->run(): '+e+'\n';
             //alert('Error en funciones.js->run(): '+e);
