@@ -86,17 +86,23 @@ function load(){
 			eval(scriptPL);
 			//clearInterval(intIdContador);
 			//clearInterval(intIdJB);
-		}else{
+		}
+		else if(main_ret == 1){
+			msg.value+='Empezando Payload '+main_ret;
+			read_ptr_at(0);
+			msg.value+='//------------------------------';
+			eval(scriptPL);
+		}
+		else{
 			document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
 			document.getElementById('fail').style.display = 'block';
 		}
 	}catch(e){
 		msg.value+='Error en funciones.js->load(): '+e+'\n';
 		//alert('Error en funciones.js->load(): '+e);
-		load();
+		//load();
 	}
 }
-line=0;
 function run(f){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', f, true);
@@ -106,8 +112,8 @@ function run(f){
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 			//code = ccode.replace(/(.*;)$/g,'\n$1\nconsole.log\("--$1"\);\n');
-			scriptJB = scriptJB.replace(f, '\nconsole.log("'+f+'");//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nconsole.log("'+f+'");//'+f+'\n\n'+ccode);
+			scriptJB = scriptJB.replace(f, '\nmsg.value+="'+f+'";//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\nmsg.value+="'+f+'";//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			msg.value+='Error en funciones.js->run(): '+e+'\n';
