@@ -11,7 +11,8 @@
 </head>
 
 <body style="margin:0">
-<textarea id="msg" style="background-color:hsla(0,0%,69%,0.55);width:600px;height:600px;z-index:100;"></textarea>
+<div id="msg" style="display:block"></div>
+<!-- <textarea id="msg"></textarea> -->
 <div id="done" class="info" style="display:none">Done.</div>
 <div id="fail" class="info" style="display:none">Fail!</div>
 <div id="footer">Agradecimientos a:<br><br></div>
@@ -20,7 +21,8 @@
 v = versionPS4(navigator.userAgent);
 msg = document.getElementById("msg");
 
-/*creditos = [
+/**/
+creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
 	{nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
@@ -44,7 +46,7 @@ html = '';
 creditos.forEach(function (c){
 	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
-document.getElementById('footer').innerHTML += html;*/
+document.getElementById('footer').innerHTML += html;
 
 v=(v==0)?672:v;//Solo para test en PC
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
