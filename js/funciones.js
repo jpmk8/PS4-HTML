@@ -75,6 +75,7 @@ function load(){
 		msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
 		if(typeof main_ret === 'undefined'){
 			eval((runPL)?scriptJB:scriptPL);
+			alert('Terminano el JB '+main_ret);
 			msg+='<br>Terminano el JB '+main_ret;
 		}
 /* 		if(main_ret == 179 || main_ret == 0){
