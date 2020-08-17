@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>PS4Jailbreak</title>
-	<link rel="stylesheet" href="css/estilo.css"/>
-	<link rel="icon" type="image/png" href="image/favicon.png">
+<!-- 	<link rel="stylesheet" href="css/estilo.css"/>
+	<link rel="icon" type="image/png" href="image/favicon.png"> -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<script src="js/pako.min.js">//Agradecimientos a PAKO, https://github.com/nodeca/pako</script>
@@ -11,17 +11,17 @@
 </head>
 
 <body style="margin:0">
-<div id="msg" style="display:block"></div>
 <!-- <textarea id="msg"></textarea> -->
 <div id="done" class="info" style="display:none">Done.</div>
 <div id="fail" class="info" style="display:none">Fail!</div>
 <div id="footer">Agradecimientos a:<br><br></div>
-<div id="contador" style="display:block">0%<div></div></div>
+<div id="contador" onclick="location.reload();" style="width:100px;height:100px;cursor:pointer;display:block">0%<div></div></div>
+<div id="msg" style='font-size:16px;font-family:Courier,"Lucida Console",monospace;display:block'></div>
 <script>
 v = versionPS4(navigator.userAgent);
 msg = document.getElementById("msg");
 
-/**/
+/*
 creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
@@ -47,7 +47,7 @@ creditos.forEach(function (c){
 	html += '<div class="credits">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
 });
 document.getElementById('footer').innerHTML += html;
-
+*/
 v=(v==0)?672:v;//Solo para test en PC
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
          (v==505)?"payload.js|vortex.js.gz":
