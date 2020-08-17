@@ -71,26 +71,26 @@ function cargando(){
 } 
 function load(){
 	try{
-		msg.value+='Tipo de main_ret:'+(typeof main_ret)+'\n';
+		msg.innerHTML+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
 		if(typeof main_ret === 'undefined'){
 			eval(scriptJB);
-			msg.value+='Terminano el JB '+main_ret;
+			msg.innerHTML+='<br>Terminano el JB '+main_ret;
 		}
 		if(main_ret == 179 || main_ret == 0){
 			document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 			document.getElementById('done').style.display = 'block';
 			document.getElementById('contador').style.display = 'none';
-			msg.value+='Empezando Payload '+main_ret;
+			msg.innerHTML+='<br>Empezando Payload '+main_ret;
 			read_ptr_at(0);
-			msg.value+='//------------------------------';
+			msg.innerHTML+='<br>//------------------------------';
 			eval(scriptPL);
 			//clearInterval(intIdContador);
 			//clearInterval(intIdJB);
 		}
 		else if(main_ret == 1){
-			msg.value+='Empezando Payload '+main_ret;
+			msg.innerHTML+='Empezando Payload '+main_ret;
 			read_ptr_at(0);
-			msg.value+='//------------------------------';
+			msg.innerHTML+='<br>//------------------------------';
 			eval(scriptPL);
 		}
 		else{
@@ -98,7 +98,7 @@ function load(){
 			document.getElementById('fail').style.display = 'block';
 		}
 	}catch(e){
-		msg.value+='\nError en funciones.js->load(): '+e+'\n';
+		msg.innerHTML+='<br>Error en funciones.js->load(): '+e+'<br>';
 		//alert('Error en funciones.js->load(): '+e);
 		//load();
 	}
@@ -112,11 +112,11 @@ function run(f){
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 			//code = ccode.replace(/(.*;)$/g,'\n$1\nconsole.log\("--$1"\);\n');
-			scriptJB = scriptJB.replace(f, '\nmsg.value+="'+f+'\\n";//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nmsg.value+="'+f+'\\n";//'+f+'\n\n'+ccode);
+			scriptJB = scriptJB.replace(f, '\nmsg.innerHTML+="'+f+'<br>";//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\nmsg.innerHTML+="'+f+'<br>";//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
-			msg.value+='\nError en funciones.js->run(): '+e+'\n';
+			msg.innerHTML+='<br>Error en funciones.js->run(): '+e+'<br>';
             //alert('Error en funciones.js->run(): '+e);
 		}
 	};
