@@ -74,6 +74,7 @@ function load(){
 	while(true){
 		try{
 			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
+			alert('main_ret:'+(typeof main_ret==='undefined')?'undefined':main_ret);
 			if(typeof main_ret === 'undefined'){
 				eval(scriptJB);
 				msg+='<br>Terminano el JB '+main_ret;
