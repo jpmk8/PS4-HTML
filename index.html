@@ -9,7 +9,7 @@
 	<title>RG Exploits - PS4</title>
 </head>
 
-<body onload="setTimeout(loadHack, 10000, scriptJB);">
+<body>
 <div id="msg" style='display:block'></div> 
 <div id="cache" style="display:none">0%</div>
 <div id="contador" style="display:none">0%<div></div></div>
@@ -25,7 +25,14 @@ Estamos en desarrollo :D<br>
 	window.applicationCache.oncached=function(){
 		document.getElementById('cache').style.display = 'none';
     };
-    manejoCookies("isHack=false;",true);	
+	window.applicationCache.onnoupdate=function(){
+		setTimeout(loadHack, 2000, scriptJB);
+	};
+	window.applicationCache.onerror=function(){
+		setTimeout(loadHack, 2000, scriptJB);
+	};
+	
+    //manejoCookies("isHack=false;",true);	
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
@@ -41,7 +48,7 @@ Estamos en desarrollo :D<br>
     v=(v==0)?672:v;//Solo para test en PC
     
     payloads.forEach(function (p){
-        document.write('<div id="'+p.id+'" class="bt">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
+        document.write('<div id="'+p.id+'" class="bt" onclick="'+p.code+'">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
         document.getElementById(p.id).onclick = function() {
             if(p.hasOwnProperty("url"))
                 location.href = p.url;
