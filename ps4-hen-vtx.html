@@ -1,0 +1,24 @@
+<html>
+<body>
+<script>
+if(document.cookie.indexOf('kex=0') >= 0)
+    document.location.href = '.';
+else
+    document.cookie = 'kex=0';
+</script>
+<script>function print(){}</script>
+<script src="js/exploit.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/malloc.js"></script>
+<script src="js/rop.js"></script>
+<script src="js/syscalls.js"></script>
+<script src="js/syscalls2.js"></script>
+<script src="js/mira.js"></script>
+<script src="js/ps4-hen-vtx.js"></script>
+<script src="js/mira-code.js"></script>
+<script>
+alert("You're all set!");
+read_ptr_at(0);
+</script>
+</body>
+</html>

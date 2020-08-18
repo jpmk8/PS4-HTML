@@ -69,13 +69,12 @@ function cargando(){
 		//intIdJB=setInterval(load, 3000);
 //	}
 } 
-function load(script){
+function load(){
 	while(true){
 		try{
-//alert('main_ret: '+(typeof main_ret==='undefined')?'undefined':main_ret);
 			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
 			if(typeof main_ret === 'undefined'){
-				eval(script);
+				eval(scriptJB);
 				msg+='<br>Terminano el JB '+main_ret;
 			}
 			else if(main_ret == 179 || main_ret == 0){
@@ -86,7 +85,7 @@ alert('main_ret: '+main_ret);
 				msg+='<br>Empezando Payload '+main_ret;
 				read_ptr_at(0);
 				msg+='<br>//------------------------------';
-				eval(script);
+				eval(scriptPL);
 				break;
 				//clearInterval(intIdContador);
 				//clearInterval(intIdJB);
@@ -95,7 +94,7 @@ alert('main_ret: '+main_ret);
 				msg+='Empezando Payload '+main_ret;
 				read_ptr_at(0);
 				msg+='<br>//------------------------------';
-				eval(script);
+				eval(scriptPL);
 				break;
 			}
 			else{
