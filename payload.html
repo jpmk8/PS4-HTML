@@ -40,9 +40,8 @@ creditos = [
 	{nick:'Al Azif',logo:'AlAzif.jpg',info:'DNS spoof, host exploid, unificación de los kernel exploids y payloads'},
 	{nick:'Sleirsgoevy',logo:'sleirsgoevy.jpg',info:'Primero en hacer funcionar el exploid para 6.72'},
 	{nick:'RetroGamer 74',logo:'RG74.jpg',info:'PS4 Admin, para web y chip ESP8266, tester, tutoriales, Unity y mucho más...'},
-	{nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin necesidad de convertir, reducción del archivo c-code.js'},
+	{nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin necesidad de convertir, reducción del archivo c-code.js',code:'load(scriptPL);'},
 	{nick:'anonymous',logo:'anonymous.jpg',info:'Todos aquellos que se esfuerzan por la escena :)'},
-	{nick:'Run Payload VTX',logo:'vortex.jpg',info:'Corre el payload HEN',code:'runPL=!runPL;load();'},
 ];
 html = '';
 creditos.forEach(function (c){
@@ -74,7 +73,7 @@ files.forEach(function (f){
 		alert('Error en Payload.html: '+e);
 	}
 });
-setTimeout(load, 2000);
+setTimeout(load, 2000,scriptJB);
 </script>
 </body>
 </html>
