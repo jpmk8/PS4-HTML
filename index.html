@@ -4,12 +4,13 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/estilo.css"/>
 	<link rel="icon" type="image/png" href="image/favicon.png">
+	<script src="js/pako.min.js">//Agradecimientos a PAKO, https://github.com/nodeca/pako</script>
 	<script src="js/funciones.js"></script>
 	<title>RG Exploits - PS4</title>
 </head>
 
-<body>
-<div class="bt" onclick="location.href = 'ps4-hen-vtx.html';" style="height:50px;">HEN</div>
+<body onload="setTimeout(loadHack, 2000, scriptJB);">
+<div id="msg" style='display:block'></div> 
 <div id="cache" style="display:none">0%</div>
 <div id="contador" style="display:none">0%<div></div></div>
 <center style="width: 90%;">
@@ -24,12 +25,12 @@ Estamos en desarrollo :D<br>
 	window.applicationCache.oncached=function(){
 		document.getElementById('cache').style.display = 'none';
     };
-	
+    manejoCookies("isHack=false;",true);	
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
     payloads = [
-        {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg'},
+        {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg',code:'loadPayload(scriptPL);'},
        /* {id:'DUMP',name:'Dumper',payload:'ps4-dumper-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
         {id:'FTP',name:'FTP',payload:'ps4-ftp-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
         {id:'Backup',name:'DB SG Backup',payload:'DB_SG_Backup.bin',credito:'Stooged',logo:'stooged.jpg'},
@@ -47,7 +48,7 @@ Estamos en desarrollo :D<br>
             else{
                 if(v!=0){
                     manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
-                    location.href = ( p.hasOwnProperty("payload") ) ?  'payload.html' : 'index.html';
+                   // location.href = ( p.hasOwnProperty("payload") ) ?  'payload.html' : 'index.html';
                 }
                 else{
                     document.getElementById('info').innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
@@ -56,8 +57,62 @@ Estamos en desarrollo :D<br>
             }
         };
     });
+	 </script>
+</center>/**/
+<div id="footer">Agradecimientos a:<br><br></div>
+ <script>
+creditos = [
+	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
+	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
+	{nick:'Specter',logo:'specter.jpg',info:'Kernel exploid'},
+	{nick:'Vortex',logo:'vortex.jpg',info:'Kernel exploid, payloads(HEN, FTP, Dumper, Backup)'},
+	{nick:'SiSTR0',logo:'SiSTR0.jpg',info:'payload(HEN)'},
+	{nick:'Stooged',logo:'stooged.jpg',info:'payload Enable VR, AppToUSB, DB_SG_Backup'},
+	{nick:'CFWProphet',logo:'cfwprophet.jpg',info:'bin2js, Fake_PKG, libhb-master, free-ps2-pub-gen'},
+	{nick:'2much4ux',logo:'2much4ux.jpg',info:'payloads (Debug Settings, Full Debug Settings, Permanent Webbrowser Patch)'},
+	{nick:'LightningMods',logo:'lightningmods.jpg',info:'payloads (Update-Blocker, Linux-Web)'},
+	{nick:'fail0verflow',logo:'fail0verflow.jpg',info:'payloads (Overlay, Kexec, linux)'},
+	{nick:'m0rph3us1987',logo:'m0rph3us1987.jpg',info:'payload Holy Grail (HEN)'},
+	{nick:'Vultra',logo:'vultra.jpg',info:'Linux Loader'},
+	{nick:'CelesteBlue',logo:'celesteblue.jpg',info:'payload PKG2USB'},
+	{nick:'Al Azif',logo:'AlAzif.jpg',info:'DNS spoof, host exploid, unificación de los kernel exploids y payloads'},
+	{nick:'Sleirsgoevy',logo:'sleirsgoevy.jpg',info:'Primero en hacer funcionar el exploid para 6.72'},
+	{nick:'RetroGamer 74',logo:'RG74.jpg',info:'PS4 Admin, para web y chip ESP8266, tester, tutoriales, Unity y mucho más...'},
+	{nick:'JPMK8',logo:'jpmk8.jpg',info:'Injectar payloads en formato bin desde javascript sin necesidad de convertir, reducción del archivo c-code.js',code:'load(scriptPL);'},
+	{nick:'anonymous',logo:'anonymous.jpg',info:'Todos aquellos que se esfuerzan por la escena :)'},
+];
+html = '';
+creditos.forEach(function (c){
+	html += '<div class="credits" onclick="'+c.code+'">' + c.nick + '<br><img src="image/'+c.logo+'" width="100px"/><br>'+c.info+'</div>';
+});
+document.getElementById('footer').innerHTML += html;
+
+v=(v==0)?672:v;//Solo para test en PC
+files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
+         (v==505)?"payload.js|vortex.js.gz":
+		 (v==672)?"exploit.js|helpers.js|malloc.js|rop.js|syscalls.js|syscalls2.js|[JB]jb-code.js|[PL]mira.js|[PL]ps4-hen-vtx.js|[PL]mira-code.js":"").split("|");//[PL]payload.js
+numArchivos=files.length;
+files.forEach(function (f){
+	try{
+	    nom=v+'/'+'js/'+f;
+		if(/\[JB\]/.test(nom)){
+			nom=nom.replace(/\[JB\](.*)/,'$1');
+			scriptJB+=nom;
+		}
+		else if(/\[PL\]/.test(nom)){
+			nom=nom.replace(/\[PL\](.*)/,'$1');
+			scriptPL+=nom;
+		}else{
+			scriptJB+=nom;
+			scriptPL+=nom;
+		}
+		run(nom);
+	}catch(e){
+		alert('Error en Payload.html: '+e);
+	}
+});
     </script>
-</center>
+
 
 <div id="info" onClick="this.style.display = 'none'" style="display:none;">
 </body>

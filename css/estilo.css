@@ -75,7 +75,7 @@ center{
     overflow: hidden;
 }
 #footer{
-    padding-top:32%;
+   /*  padding-top:32%; */
     background-color:hsla(0,0%,100%,0.70);
     text-align:center;
 }

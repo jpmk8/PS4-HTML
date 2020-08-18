@@ -48,7 +48,7 @@ function versionPS4(ua){
 function showHide(e){
 	e.style.display = (e.style.display=='none')?'block':'none';
 }
-function print(){} //Sobreescribe la funcion print para que no haga nada
+
 i = 0;
 cargaCompleta=false;
 scriptJB='';
@@ -69,6 +69,7 @@ function cargando(){
 		//intIdJB=setInterval(load, 3000);
 //	}
 } 
+function print(){} //Sobreescribe la funcion print para que no haga nada
 function load(){
 	while(true){
 		try{
@@ -91,11 +92,11 @@ alert('main_ret: '+main_ret);
 				//clearInterval(intIdJB);
 			}
 			else if(main_ret == 1){
+alert('main_ret: '+main_ret);
 				msg+='Empezando Payload '+main_ret;
 				read_ptr_at(0);
 				msg+='<br>//------------------------------';
 				eval(scriptPL);
-				break;
 			}
 			else{
 				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
@@ -107,6 +108,30 @@ alert('main_ret: '+main_ret);
 			//load();
 			continue;
 		}
+	}
+}
+function loadHack(script){
+	try{
+		if(/true/.test(cookies['isHack'])){
+			eval(script);
+			if(main_ret == 179 || main_ret == 0){
+				alert(main_ret);
+				manejoCookies("isHack=true;",true);
+			}else{
+				location.reload(); 
+			}
+		}
+	}
+	catch(e){
+		location.reload(); 
+	}
+}
+function loadPayload(script){
+	try{
+		eval(script);
+	}
+	catch(e){
+		alert("Error en loadPayload->"+e);
 	}
 }
 function run(f){
