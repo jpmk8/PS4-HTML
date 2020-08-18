@@ -112,7 +112,7 @@ alert('main_ret: '+main_ret);
 }
 function loadHack(script){
 	try{
-		if(/true/.test(cookies['isHack'])){
+		if(!/true/.test(cookies['isHack'])){
 			eval(script);
 			if(main_ret == 179 || main_ret == 0){
 				alert(main_ret);
