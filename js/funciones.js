@@ -71,38 +71,42 @@ function cargando(){
 } 
 runPL=false;
 function load(){
-	try{
-		msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
-		if(typeof main_ret === 'undefined'){
-			eval((runPL)?scriptJB:scriptPL);
-			alert('Terminano el JB '+main_ret);
-			msg+='<br>Terminano el JB '+main_ret;
+	while(true){
+		try{
+			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
+			if(typeof main_ret === 'undefined'){
+				eval(scriptJB);
+				msg+='<br>Terminano el JB '+main_ret;
+			}
+			else if(main_ret == 179 || main_ret == 0){
+				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
+				document.getElementById('done').style.display = 'block';
+				document.getElementById('contador').style.display = 'none';
+				msg+='<br>Empezando Payload '+main_ret;
+				read_ptr_at(0);
+				msg+='<br>//------------------------------';
+				eval(scriptPL);
+				break;
+				//clearInterval(intIdContador);
+				//clearInterval(intIdJB);
+			}
+			else if(main_ret == 1){
+				msg+='Empezando Payload '+main_ret;
+				read_ptr_at(0);
+				msg+='<br>//------------------------------';
+				eval(scriptPL);
+				break;
+			}
+			else{
+				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
+				document.getElementById('fail').style.display = 'block';
+			} /**/
+		}catch(e){
+			document.getElementById("msg").innerHTML=msg+'<br>Error en funciones.js->load(): '+e+'<br>';
+			//alert('Error en funciones.js->load(): '+e);
+			//load();
+			continue;
 		}
-/* 		if(main_ret == 179 || main_ret == 0){
-			document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
-			document.getElementById('done').style.display = 'block';
-			document.getElementById('contador').style.display = 'none';
-			msg+='<br>Empezando Payload '+main_ret;
-			read_ptr_at(0);
-			msg+='<br>//------------------------------';
-			eval(scriptPL);
-			//clearInterval(intIdContador);
-			//clearInterval(intIdJB);
-		}
-		else if(main_ret == 1){
-			msg+='Empezando Payload '+main_ret;
-			read_ptr_at(0);
-			msg+='<br>//------------------------------';
-			eval(scriptPL);
-		}
-		else{
-			document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
-			document.getElementById('fail').style.display = 'block';
-		} */
-	}catch(e){
-		document.getElementById("msg").innerHTML=msg+'<br>Error en funciones.js->load(): '+e+'<br>';
-		//alert('Error en funciones.js->load(): '+e);
-		//load();
 	}
 }
 function run(f){
