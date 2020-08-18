@@ -69,24 +69,24 @@ function cargando(){
 		//intIdJB=setInterval(load, 3000);
 //	}
 } 
-runPL=false;
-function load(){
+function load(script){
 	while(true){
 		try{
+			alert('main_ret: '+(typeof main_ret==='undefined')?'undefined':main_ret);
 			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
-			alert('main_ret:'+(typeof main_ret==='undefined')?'undefined':main_ret);
 			if(typeof main_ret === 'undefined'){
-				eval(scriptJB);
+				eval(script);
 				msg+='<br>Terminano el JB '+main_ret;
 			}
 			else if(main_ret == 179 || main_ret == 0){
+alert('main_ret: '+main_ret);
 				document.getElementById('done').innerHTML+=' - '+(main_ret == 179)?'already hacked':'success';
 				document.getElementById('done').style.display = 'block';
 				document.getElementById('contador').style.display = 'none';
 				msg+='<br>Empezando Payload '+main_ret;
 				read_ptr_at(0);
 				msg+='<br>//------------------------------';
-				eval(scriptPL);
+				eval(script);
 				break;
 				//clearInterval(intIdContador);
 				//clearInterval(intIdJB);
@@ -95,7 +95,7 @@ function load(){
 				msg+='Empezando Payload '+main_ret;
 				read_ptr_at(0);
 				msg+='<br>//------------------------------';
-				eval(scriptPL);
+				eval(script);
 				break;
 			}
 			else{
