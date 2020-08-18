@@ -72,7 +72,7 @@ function cargando(){
 function load(script){
 	while(true){
 		try{
-			alert('main_ret: '+(typeof main_ret==='undefined')?'undefined':main_ret);
+//alert('main_ret: '+(typeof main_ret==='undefined')?'undefined':main_ret);
 			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
 			if(typeof main_ret === 'undefined'){
 				eval(script);
