@@ -10,14 +10,14 @@
 </head>
 
 <body>
-<div id="msg" style='display:block'></div> 
+<div id="msg" style='display:none'></div> 
 <div id="cache" style="display:none">0%</div>
 <div id="contador" style="display:none">0%<div></div></div>
 <center style="width: 90%;">
-Estamos en desarrollo :D<br>
+Estamos en desarrollo :D<br><br>
   <script>
 	window.applicationCache.ondownloading = function(){
-		manejoCookies("isHack=false;",true);	
+		//manejoCookies("isHack=false;",true);	
 		document.getElementById('cache').style.display = 'block';
 	};
 	window.applicationCache.onprogress = function(a){
@@ -25,19 +25,19 @@ Estamos en desarrollo :D<br>
 	};
 	window.applicationCache.oncached=function(){
 		document.getElementById('cache').style.display = 'none';
-	    setTimeout(loadHack, 2000, scriptJB);
 	};
-	window.applicationCache.onnoupdate=function(){
+/*	window.applicationCache.onnoupdate=function(){
 		setTimeout(loadHack, 2000, scriptJB);
 	};
 	window.applicationCache.onerror=function(){
 		setTimeout(loadHack, 2000, scriptJB);
-	};
+	}; */
 	
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
     payloads = [
+        {id:'JB',name:'Cargar JB',payload:'ps4-hen-vtx.bin',credito:'Sleirsgoevy',logo:'sleirsgoevy.jpg',code:'loadHack(scriptJB);'},
         {id:'HEN',name:'Homebrew Enabler',payload:'ps4-hen-vtx.bin',credito:'SiSTR0',logo:'SiSTR0.jpg',code:'loadPayload(scriptPL);'},
        /* {id:'DUMP',name:'Dumper',payload:'ps4-dumper-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
         {id:'FTP',name:'FTP',payload:'ps4-ftp-vtx.bin',credito:'Vortex',logo:'vortex.jpg'},
@@ -49,14 +49,16 @@ Estamos en desarrollo :D<br>
     v=(v==0)?672:v;//Solo para test en PC
     
     payloads.forEach(function (p){
-        document.write('<div id="'+p.id+'" class="bt" onclick="'+p.code+'">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
+        document.write('<div id="'+p.id+'" class="bt">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
         document.getElementById(p.id).onclick = function() {
             if(p.hasOwnProperty("url"))
                 location.href = p.url;
             else{
                 if(v!=0){
-                    manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
+                    //manejoCookies('id=' + p.id + ';name=' + p.name + ';payload=' + v+'/payload/'+p.payload,true);
                    // location.href = ( p.hasOwnProperty("payload") ) ?  'payload.html' : 'index.html';
+				   eval(p.code);
+				   document.getElementById('contador').style.display = 'block';
                 }
                 else{
                     document.getElementById('info').innerHTML = 'La opción '+p.name+' no funciona en: '+ navigator.userAgent;
