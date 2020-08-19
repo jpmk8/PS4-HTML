@@ -70,7 +70,7 @@ function cargando(){
 //	}
 } 
 function print(){} //Sobreescribe la funcion print para que no haga nada
-function load(){
+/* function load(){
 	while(true){
 		try{
 			msg+='<br>Tipo de main_ret:'+(typeof main_ret)+'<br>';
@@ -101,7 +101,7 @@ alert('main_ret: '+main_ret);
 			else{
 				document.getElementById('fail').innerHTML+=' - Jailbreak failed! Reboot your PS4 and try again.';
 				document.getElementById('fail').style.display = 'block';
-			} /**/
+			} 
 		}catch(e){
 			document.getElementById("msg").innerHTML=msg+'<br>Error en funciones.js->load(): '+e+'<br>';
 			//alert('Error en funciones.js->load(): '+e);
@@ -110,24 +110,26 @@ alert('main_ret: '+main_ret);
 		}
 	}
 }
-
+ */
 function loadHack(script){
-	cookies = getCookies();
+//cookies = getCookies();
 //	document.getElementById("msg").innerHTML+=script.replace(/\n/g,'<br>')+'<br>';
-document.getElementById("msg").innerHTML+=cookies['isHack']+'<br>';
+//document.getElementById("msg").innerHTML+=cookies['isHack']+'<br>';
 	try{
-		if(!/true/.test(cookies['isHack'])){
+		//if(!/true/.test(cookies['isHack'])){
 			eval(script);
 			if(main_ret == 179 || main_ret == 0){
-				alert(main_ret);
-				manejoCookies("isHack=true;",true);
+				alert('Carga exitosa '+main_ret);
+				document.getElementById('contador').style.display = 'none';
+				//manejoCookies("isHack=true;",true);
 			}else{
 				//location.reload(); 
 			}
-		}
+		//}
 	}
 	catch(e){
-	    document.getElementById("msg").innerHTML+="Error en loadPayload->"+e+"<br>";
+		alert("Error en loadPayload->"+e);
+	    //document.getElementById("msg").innerHTML+="Error en loadPayload->"+e+"<br>";
 		//location.reload(); 
 	}
 }
