@@ -17,6 +17,7 @@
 Estamos en desarrollo :D<br>
   <script>
 	window.applicationCache.ondownloading = function(){
+		manejoCookies("isHack=false;",true);	
 		document.getElementById('cache').style.display = 'block';
 	};
 	window.applicationCache.onprogress = function(a){
@@ -24,7 +25,8 @@ Estamos en desarrollo :D<br>
 	};
 	window.applicationCache.oncached=function(){
 		document.getElementById('cache').style.display = 'none';
-    };
+	    setTimeout(loadHack, 2000, scriptJB);
+	};
 	window.applicationCache.onnoupdate=function(){
 		setTimeout(loadHack, 2000, scriptJB);
 	};
@@ -32,7 +34,6 @@ Estamos en desarrollo :D<br>
 		setTimeout(loadHack, 2000, scriptJB);
 	};
 	
-    //manejoCookies("isHack=false;",true);	
     v = versionPS4(navigator.userAgent);
 
 	document.title+='-'+((v>0)?v:'NoPS4');
@@ -63,9 +64,9 @@ Estamos en desarrollo :D<br>
                 }
             }
         };
-    });
+    });/**/
 	 </script>
-</center>/**/
+</center>
 <div id="footer">Agradecimientos a:<br><br></div>
  <script>
 creditos = [
@@ -97,7 +98,7 @@ document.getElementById('footer').innerHTML += html;
 v=(v==0)?672:v;//Solo para test en PC
 files = ((v==455)?"rop.js.gz|syscalls.js.gz|loader.js.gz|payload.js|userland.js.gz|kernel.js.gz":
          (v==505)?"payload.js|vortex.js.gz":
-		 (v==672)?"exploit.js|helpers.js|malloc.js|rop.js|syscalls.js|syscalls2.js|[JB]jb-code.js|[PL]mira.js|[PL]ps4-hen-vtx.js|[PL]mira-code.js":"").split("|");//[PL]payload.js
+		 (v==672)?"exploit.js.gz|helpers.js.gz|malloc.js.gz|rop.js.gz|syscalls.js.gz|syscalls2.js.gz|[JB]jb-code.js.gz|[PL]mira.js.gz|[PL]ps4-hen-vtx.js.gz|[PL]mira-code.js.gz":"").split("|");//[PL]payload.js
 numArchivos=files.length;
 files.forEach(function (f){
 	try{
@@ -121,6 +122,6 @@ files.forEach(function (f){
     </script>
 
 
-<div id="info" onClick="this.style.display = 'none'" style="display:none;">
+<div id="info" onClick="this.style.display = 'none'" style="display:none;"></div>
 </body>
 </html>

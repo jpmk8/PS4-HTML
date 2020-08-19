@@ -110,7 +110,11 @@ alert('main_ret: '+main_ret);
 		}
 	}
 }
+
 function loadHack(script){
+	cookies = getCookies();
+//	document.getElementById("msg").innerHTML+=script.replace(/\n/g,'<br>')+'<br>';
+document.getElementById("msg").innerHTML+=cookies['isHack']+'<br>';
 	try{
 		if(!/true/.test(cookies['isHack'])){
 			eval(script);
@@ -118,12 +122,13 @@ function loadHack(script){
 				alert(main_ret);
 				manejoCookies("isHack=true;",true);
 			}else{
-				location.reload(); 
+				//location.reload(); 
 			}
 		}
 	}
 	catch(e){
-		location.reload(); 
+	    document.getElementById("msg").innerHTML+="Error en loadPayload->"+e+"<br>";
+		//location.reload(); 
 	}
 }
 function loadPayload(script){
@@ -143,8 +148,8 @@ function run(f){
 		try{
 			ccode = (/\.js$/.test(f))?this.responseText:pako.ungzip(this.response,{ to: 'string' });
 			//code = ccode.replace(/(.*;)$/g,'\n$1\nconsole.log\("--$1"\);\n');
-			scriptJB = scriptJB.replace(f, '\nmsg+="'+f+'<br>";//'+f+'\n\n'+ccode);
-			scriptPL = scriptPL.replace(f, '\nmsg+="'+f+'<br>";//'+f+'\n\n'+ccode);
+			scriptJB = scriptJB.replace(f, '\n//'+f+'\n\n'+ccode);
+			scriptPL = scriptPL.replace(f, '\n//'+f+'\n\n'+ccode);
 			//document.getElementById("msg").innerHTML=scriptJB+'<br>'+scriptPL;			cargaCompleta=--numArchivos == 0;
 		}catch(e){
 			msg+='<br>Error en funciones.js->run(): '+e+'<br>';

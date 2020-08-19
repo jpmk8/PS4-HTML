@@ -26,17 +26,6 @@ payload.html
 505\payload\ps4-dumper-vtx.bin
 505\payload\ps4-ftp-vtx.bin
 505\payload\ps4-hen-vtx.bin
-672\js\exploit.js
-672\js\helpers.js
-672\js\jb-code.js
-672\js\malloc.js
-672\js\mira-code.js
-672\js\mira.js
-672\js\payload.js
-672\js\ps4-hen-vtx.js
-672\js\rop.js
-672\js\syscalls.js
-672\js\syscalls2.js
 672\js\exploit.js.gz
 672\js\helpers.js.gz
 672\js\jb-code.js.gz
