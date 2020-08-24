@@ -128,7 +128,7 @@ function loadHack(script){
 		//}
 	}
 	catch(e){
-		alert("Error en loadPayload->"+e);
+		alert("Error en loadHack->"+e);
 	    //document.getElementById("msg").innerHTML+="Error en loadPayload->"+e+"<br>";
 		//location.reload(); 
 	}
