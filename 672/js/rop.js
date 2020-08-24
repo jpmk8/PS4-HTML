@@ -19,7 +19,7 @@ function get_got_addr(idx) {
 	var p = plt_ptr + idx * 16;
 	var q = read_mem(p, 6);
 	if (q[0] != 0xff || q[1] != 0x25)
-		throw "invalid GOT entry "' + idx;
+		throw "invalid GOT entry " + idx;
 	var offset = 0;
 	for (var i = 5; i >= 2; i--)
 		offset = offset * 256 + q[i];
@@ -210,9 +210,7 @@ function init(len) {
 	g = function (val) {
 		r_array[r_offset++] = val | 0;
 		r_array[r_offset++] = (val / _4GB) | 0;
-/* if(r_offset>150000)
-document.getElementById('msg').innerHTML += '<br>g('+val+')->r_offset:'+r_offset;
- */	};
+	};
 	gs = function (l) {
 		for (i = 0; i < l.length; i++)
 			g(l[i]);
@@ -220,13 +218,11 @@ document.getElementById('msg').innerHTML += '<br>g('+val+')->r_offset:'+r_offset
 	d = function(v) {
 		r_array[r_offset++] = (v < 0) ? _4GB - v : v;
 		r_array[r_offset++] = (v < 0) ? _4GB - 1 : 0;
-/* if(r_offset>150000)
-document.getElementById('msg').innerHTML += '<br>d('+v+')->r_offset:'+r_offset;
- */	};
+	};
 	db = function (data) {
-/* if(r_offset>150000)
-document.getElementById('msg').innerHTML += '<br>db('+data+')->r_offset:'+r_offset+' len:'+r_array.length;
- */		for (i = 0; i < data.length; i++)
+//if(r_offset>150000)
+//document.getElementById('msg').innerHTML += '<br>db('+data+')->r_offset:'+r_offset+' len:'+r_array.length;
+ 	for (i = 0; i < data.length; i++)
 			r_array[r_offset++] = data[i];
 	};
 	main_ret = malloc(8);
