@@ -20,7 +20,7 @@ function get_got_addr(idx)
     var p = plt_ptr + idx * 16;
     var q = read_mem(p, 6);
     if(q[0] != 0xff || q[1] != 0x25)
-        throw "invalid GOT entry "+idx;
+        alert('throw "invalid GOT entry "'+idx);
     var offset = 0;
     for(var i = 5; i >= 2; i--)
         offset = offset * 256 + q[i];
