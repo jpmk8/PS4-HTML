@@ -28,12 +28,15 @@ payload.html
 505\payload\ps4-hen-vtx.bin
 672\js\exploit.js.gz
 672\js\helpers.js.gz
+672\js\jb-code.js
 672\js\jb-code.js.gz
 672\js\malloc.js.gz
+672\js\mira-code.js
 672\js\mira-code.js.gz
 672\js\mira.js.gz
 672\js\payload.js
 672\js\ps4-hen-vtx.js.gz
+672\js\rop.js
 672\js\rop.js.gz
 672\js\syscalls.js.gz
 672\js\syscalls2.js.gz
