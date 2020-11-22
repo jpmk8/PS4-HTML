@@ -13,8 +13,7 @@
 <div id="msg" style='display:none'></div> 
 <div id="cache" style="display:none">0%</div>
 <div id="contador" style="display:none">0%<div></div></div>
-<center style="width: 90%;">
-Estamos en desarrollo :D<br><br>
+<center id="pcentro" style="width: 90%;">
   <script>
 	window.applicationCache.ondownloading = function(){
 		//manejoCookies("isHack=false;",true);	
@@ -34,7 +33,7 @@ Estamos en desarrollo :D<br><br>
 	}; */
 	
     v = versionPS4(navigator.userAgent);
-
+	document.getElementById("pcentro").innerHTML= 'Estamos en desarrollo :D<br><br><i style="font-family:DIN, Arial; text-shadow: 0px 0px 2px black,0px 0px 4px black,0px 0px 6px black;">' +  navigator.userAgent+'</i><br/>';
 	document.title+='-'+((v>0)?v:'NoPS4');
     payloads = [
         {id:'JB',name:'Cargar JB',payload:'ps4-hen-vtx.bin',credito:'Sleirsgoevy',logo:'sleirsgoevy.jpg',code:'loadHack(scriptJB);'},
@@ -46,7 +45,7 @@ Estamos en desarrollo :D<br><br>
        */ {id:'Google',name:'Buscador Google',url:'http://google.com',logo:'google.png'},
     ];
 
-    v=(v==0)?672:v;//Solo para test en PC
+    //v=(v==0)?672:v;Solo para test en PC
     
     payloads.forEach(function (p){
         document.write('<div id="'+p.id+'" class="bt">' + p.id + '<br><img src="image/'+p.logo+'" /><br>'+p.name+'</div>');
@@ -71,6 +70,7 @@ Estamos en desarrollo :D<br><br>
 </center>
 <div id="footer">Agradecimientos a:<br><br></div>
  <script>
+  v = versionPS4(navigator.userAgent);
 creditos = [
 	{nick:'qwertyoruiopz',logo:'qwertyoruiopz.jpg',info:'Kernel exploid'},
 	{nick:'flatz',logo:'flatz.jpg',info:'Kernel exploid'},
